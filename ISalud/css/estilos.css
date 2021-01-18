@@ -1,0 +1,839 @@
+/***** Darío Gijón *****/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video,dl,dt,dd {
+	font-size: 100%;
+	font-style: normal;
+	vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+	display: block;
+}
+audio, canvas, progress, video {
+	display: inline-block;
+	vertical-align: baseline
+}
+a { outline:none; text-decoration: none; color: var(--colorPrimario); }
+a:hover{text-decoration: underline;}
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+/** Estilos Generales **/
+
+
+html{
+	font-size: 15px;
+}
+
+body{
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+	padding: 0;
+}
+
+:root{
+	--colorPrimario: #2298A9;
+	--colorSecundario: #FCA837;
+	--colorTexto: #707070;
+    --grisClaro: #F8F8F8;
+    --grisMedio: #EFEFEF;
+}
+
+h1,h2, h3, h4,h6{
+	color: var(--colorTexto);
+    line-height: 1.2;
+    font-weight: 500;
+}
+h1{
+	font-size: 2rem;
+	margin-bottom:20px;
+}
+h2{
+	font-size: 1.6rem;
+	margin-bottom:20px;
+}
+h3{
+	font-size: 1.3rem;
+}
+
+li, p, th, td, dt, dd, span{
+	font-size: 1rem;
+	margin-bottom:20px;
+    color: var(--colorTexto);
+    font-weight: 500;
+}
+ul{ list-style: none;}
+
+.center{
+	width: 1200px;
+    margin: 0 auto;
+}
+.center-main{
+    width: 900px;
+    margin: 0 auto;
+}
+.center-main h1{
+    margin-bottom: 30px;
+}
+.text-center{
+    text-align: center;
+}
+main{
+    padding-bottom: 100px;
+}
+.btn-primary{
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--colorPrimario);
+    padding: 15px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.btn-primary:hover{
+    opacity: 0.8;
+    text-decoration: none;
+}
+/*** Estilos header ***/
+
+header{
+    padding: 25px 0;
+    -webkit-box-shadow: 0 3px 10px 0 rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px 0 rgba(0,0,0,0.1);
+    position: relative;
+}
+header .center{
+    display: grid;
+    grid-template-columns: 170px 50px 1fr;
+    grid-column-gap: 20px;
+    align-items: center;
+}
+.menu-principal{
+    position: relative;
+}
+.menu-principal .menu{
+    position: absolute;
+    background: var(--colorPrimario);
+    width: 270px;
+    top: 0;
+    left: 45px;
+}
+.menu-principal .menu li{
+    margin: 0;
+}
+.menu-principal .menu a{
+    color: #fff;
+    display: block;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+.menu-principal .menu a:hover{
+    text-decoration: none;
+    opacity: 0.8;
+}
+.icono-menu{
+    cursor: pointer;
+}
+.icono-menu:hover{
+    opacity: 0.8;
+}
+.datos-usuario{
+    text-align: right;
+}
+.datos-usuario ul li{
+    display: inline-block;
+    margin: 0;
+}
+.datos-usuario ul li:first-child{
+    margin-right: 70px;
+}
+.datos-usuario ul li:last-child{
+    padding-right: 80px;
+    position: relative;
+}
+.datos-usuario ul li .i-off{
+    position: absolute;
+    right: 0;
+    top: 2px;
+    border-left: 1px solid #ccc;
+    padding: 0px 16px 4px;
+}
+.datos-usuario ul li img{
+    vertical-align: bottom;
+    margin-right: 10px;
+}
+
+/*** Main Menu ***/
+
+.main-menu{
+    padding: 70px 0;
+}
+.main-menu h1{
+    margin-bottom: 50px;
+}
+.grid-menu{
+    width: 830px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+}
+.grid-menu > div{
+    border: 1px solid #D0D0D0;
+    border-radius: 20px;
+    height: 150px;
+    line-height: 140px;
+    padding-left: 50px;
+    position: relative;
+    transition: all ease-in-out .2s;
+}
+.grid-menu > div:hover{
+    border-color: var(--colorPrimario);
+}
+.grid-menu > div a{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+.grid-menu > div img{
+    margin-right: 30px;
+}
+.grid-menu > div img, .grid-menu > div h3{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+/*** Volver ***/
+
+.volver{
+    background: var(--grisClaro);
+    padding: 30px 0;
+    margin-bottom: 50px;
+}
+.volver a{
+    color: var(--colorTexto);
+    font-weight: 500;
+}
+.volver a img{
+    display: inline-block;
+    margin-right: 7px;
+}
+/*** Estilos formulario ***/
+input{
+    width: 100%;
+    height: 48px;
+    border-radius: 10px;
+    border: 0;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    padding-left: 20px;
+}
+button{
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+button:hover{
+    opacity: 0.8;
+}
+/*** Estilos buscador ***/
+
+.buscador{
+    background: var(--grisMedio);
+    padding: 30px 40px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+.buscador form{
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    grid-column-gap: 30px;
+}
+
+.resultado-busqueda{
+    margin: 30px 0;
+}
+.resultado-busqueda h3{
+    margin-bottom: 50px;
+}
+.resultado-busqueda b{
+    font-size: 1.1rem;
+    color: var(--colorTexto);
+    display: block;
+    margin-bottom: 5px;
+}
+.resultado-busqueda p{
+    opacity: 0.7;
+}
+.resultado-busqueda .datos{
+    width: 720px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 20px;
+    grid-column-gap: 80px;
+}
+.resultado-busqueda .datos .ubicacionDato{
+    grid-column-start: 1;
+}
+
+
+/*** Estilos dataTable ***/
+
+table.dataTable thead th, table.dataTable thead td{
+    background: var(--colorPrimario);
+    color: #fff;
+    text-align: left;
+    vertical-align: middle;
+}
+table.dataTable tbody th, table.dataTable tbody td{
+    padding: 10px 18px !important;
+    border: 0 !important;
+    vertical-align: middle;
+}
+table.dataTable.no-footer, table.dataTable thead th, table.dataTable thead td{
+    border: 0 !important;
+}
+.dataTables_length{
+    display: none !important;
+}
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate{
+    width: 50%;
+    background: var(--grisMedio);
+    height: 50px;
+    margin-top: 30px;
+    padding: 0 30px;
+    font-weight: 500;
+    color: var(--colorTexto);
+}
+.dataTables_wrapper .dataTables_info{
+    padding-top: 16px !important;
+    border-radius: 10px 0 0 10px;
+}
+.dataTables_wrapper .dataTables_paginate{
+    border-radius: 0 10px 10px 0;
+    padding-top: 5px;
+   
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled{
+    background-color: var(--colorPrimario) !important;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    position: relative;
+    top: -11px;
+    font-size: 0;
+    cursor: pointer !important;
+}
+.paginate_button.next{
+    background-image: url(/img/next-arrow.svg) !important;
+    background-repeat: no-repeat !important;
+    background-position: 6px 4px !important;
+}
+.paginate_button.previous{
+    background-image: url(/img/prev-arrow.svg) !important;
+    background-repeat: no-repeat !important;
+    background-position: 6px 4px !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current{
+    background: transparent !important;
+    border: none !important;
+    position: relative;
+    bottom: -3px;
+}
+.dataTables_wrapper .dataTables_info{
+    text-align: left;
+}
+
+/*** Estilos Radio Button ***/
+
+.radio-button,
+.checkbox {
+  position: relative;
+  margin: 20px 0;
+  cursor: pointer;
+}
+.checkbox { display: block; }
+
+.radio-button input,
+.checkbox input {
+  position: absolute;
+  margin: 5px;
+  padding: 0;
+  /* for mobile accessibility (iOS Label Bug) */
+  visibility: hidden;
+}
+.radio-button .label-visible,
+.checkbox .label-visible {
+  margin-left: 2em;
+  margin-bottom: 0;
+}
+
+.fake-radiobutton,
+.fake-checkbox{
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #707070;
+  background-color:transparent;
+}
+th .fake-radiobutton,
+th .fake-checkbox{
+    border: 1px solid #fff;
+}
+.fake-radiobutton:after,
+.fake-checkbox:after {
+  content: "";
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 13px;
+  height: 13px;
+  background: var(--colorPrimario);
+  transform: translateX(-50%) translateY(-50%);
+}
+th .fake-radiobutton:after,
+th .fake-checkbox:after {
+    background: #fff;
+}
+
+.fake-radiobutton { border-radius: 50%; }
+.fake-radiobutton:after { border-radius: 50%; }
+
+input[type="radio"]:checked + span .fake-radiobutton:after,
+input[type="checkbox"]:checked + span .fake-checkbox:after { display: block; }
+
+
+/*** Filtros ***/
+
+.filtros-consulta{
+    margin-bottom: 40px;
+}
+.filtros-consulta form{
+    grid-template-columns: 250px 250px 50px;
+}
+
+.consulta-beneficiario .calculo{
+    color: var(--colorTexto);
+    text-align: center;
+    position: relative;
+    top: -35px;
+}
+.consulta-beneficiario .btn-primary{
+    display: block;
+    margin: 0 auto;
+    width: max-content;
+}
+
+
+/***  Consultar estado de cobranza ***/
+
+.filtros-estado-cobranza form{
+    display: grid;
+    grid-template-columns: 180px 180px 180px 250px 180px 40px;
+    grid-column-gap: 20px;
+}
+.filtros-estado-cobranza form > div{
+    position: relative;
+}
+.filtros-estado-cobranza form > div img{
+    position: absolute;
+    right: 20px;
+    top: 16px;
+}
+
+
+/*** Select 2 ***/
+
+.select2-container--default .select2-selection--single .select2-selection__rendered, .select2-container--default .select2-selection--single .select2-selection__arrow, .select2-container--default.select2-container--open.select2-container--below .select2-selection--single, .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple, .select2-container--default .select2-results__option[aria-selected=true], .select2-container--open .select2-dropdown, .select2-results, .select2-container--default .select2-selection--single {
+    margin-bottom: 0;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border-radius: 10px;
+    height: 48px;
+    border: 0;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    line-height: 50px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: #2298a9 transparent transparent transparent;
+    border-style: solid;
+    border-width: 5px 4px 0 4px;
+    height: 0;
+    left: -40%;
+    margin-left: -4px;
+    margin-top: -2px;
+    position: absolute;
+    top: 90%;
+    width: 0;
+}
+.select2-container .select2-selection--single .select2-selection__rendered{
+    padding-left: 18px;
+    color: var(--colorTexto);
+}
+
+
+/*** Estilos PopUp ***/
+
+.overlay{
+    width: 100%;
+    height: 100%;
+    background: #fffc;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+}
+.overlay .contenedor-popup{
+    width: 320px;
+    display: block;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+.overlay .contenedor-popup h3{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.overlay .contenedor-popup span{
+    display: block;
+    margin-bottom: 5px;
+    opacity: 0.7;
+    font-weight: normal;
+}
+.overlay .contenedor-popup b{
+    display: block;
+    margin-bottom: 20px;
+    color: var(--colorTexto);
+}
+.overlay .contenedor-popup div{
+    margin-bottom: 30px;
+}
+.overlay .contenedor-popup .scroll{
+    height: 250px;
+    overflow-y: scroll;
+}
+.overlay .contenedor-popup .btn-primary{
+    display: block;
+    margin: 0 auto;
+    width: max-content;
+}
+.overlay .contenedor-popup .datosFactura{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+}
+.overlay .contenedor-popup .datosFactura > div{
+    margin-bottom: 0;
+}
+
+/*** Cobrar nueva factura  ***/
+
+.filtros-cobrarfactura form{
+    display: grid;
+    grid-template-columns: 200px 200px 200px 40px;
+}
+.dateInput{
+    position: relative;
+}
+.dateInput img{
+    position: absolute;
+    right: 20px;
+    top: 16px;
+}
+.cobrarFactura.dataTable thead th, .cobrarFactura.dataTable tbody td{
+    padding: 10px !important;
+}
+
+
+/*** Cobrar factura main ***/
+
+.mainFactura{
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    grid-column-gap: 15px;
+    width: max-content;
+    margin: 60px auto;
+    text-align: center;
+}
+.mainFactura > div{
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    height: 280px;
+    text-align: center;
+    padding-top: 60px;
+    cursor: pointer;
+    position: relative;
+}
+.mainFactura > div:hover{
+    border-color: var(--colorPrimario);
+}
+.mainFactura > div a{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0; 
+}
+.mainFactura > div img{
+    display: block;
+    margin: 20px auto;
+}
+
+.filtro-bono{
+    display: grid;
+    grid-template-columns: 200px 250px 250px;
+    grid-column-gap: 30px;
+    width: max-content;
+    margin: 50px auto;
+}
+.filtro-bono > div{
+    border-radius: 10px;
+    height: 50px;
+    border: 1px solid #ccc;
+    line-height: 48px;
+}
+.filtro-bono > div:hover{
+    background: var(--grisMedio);
+}
+.filtro-bono .inputCheck{
+    padding-left: 50px;
+    position: relative;
+    font-weight: 500;
+}
+.filtro-bono .inputCheck label{
+    position: absolute;
+    left: 20px;
+    top: -6px;
+    z-index: 999;
+}
+.inputCheck .inputText{   
+    padding-left: 50px;
+    position: relative;
+    left: -50px;
+    width: 248px;
+}
+
+.filtrosFacturaBono form{
+    display: grid;
+    grid-template-columns: 200px 200px 200px 40px;
+    margin: 0 auto;
+    width: max-content;
+}
+.filtrosFacturaBono .checkBox{
+    background: #fff;
+    border-radius: 10px;
+    height: 48px;
+    line-height: 48px;
+}
+.cobrarBonoTabla th, .cobrarBonoTabla td{
+    text-align: center !important;
+}
+.contenedorTablaResumen{
+    display: grid;
+    grid-template-columns: 600px 1fr;
+    grid-column-gap: 20px;
+}
+.resumen .info{
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+.resumen .info h3{
+    margin-bottom: 20px;
+}
+.resumen .info div{
+    margin-bottom: 10px;
+    position: relative;
+}
+.resumen .info div span{
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0;
+}
+.resumen .info div b{
+    position: absolute;
+    right: 0;
+    color: var(--colorTexto);
+}
+.cancelarEnlace{
+    display: block;
+    color: var(--colorTexto);
+    margin: 15px 0;
+    font-weight: 500;
+}
+
+
+/*** Página de éxito ***/
+
+.paginaExito{
+    padding: 70px 0;
+}
+.paginaExito img{
+    margin-bottom: 30px;
+}
+.paginaExito p{
+    margin: 15px 0;
+}
+.paginaExito b, .paginaExito span{
+    text-align: left;
+    display: block;
+    margin: 0;
+}
+.paginaExito .info{
+    background: var(--grisMedio);
+    padding: 20px 50px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    width: 550px;
+    margin: 30px auto 50px;
+}
+.paginaError .btn-primary{
+    display: block;
+    width: max-content;
+    margin: 50px auto;
+}
+.inputFile{
+    position: relative;
+}
+.inputFile label{
+    width: 100%;
+    max-width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    text-align: left;
+    margin-bottom: 20px;
+    padding: 15px 30px;
+}
+.buscador p{
+    margin-bottom: 0;
+}
+.inputFile img{
+    position: absolute;
+    right: 30px;
+    top: 18px;
+}
+
+/** Cobrar factura con cuenta médica **/
+
+.cuentaMedica .informacion{
+    padding: 20px 50px;
+    background: var(--grisMedio);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.cuentaMedica .informacion > div{
+    display: inline-block;
+    margin-right: 30px;
+}
+.cuentaMedica .titulo{
+    position: relative;
+}
+.tooltip{
+    position: absolute;
+    
+}
+.formCuentaMedica{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    margin: 30px 0;
+}
+.formCuentaMedica input{
+    border: 1px solid #ccc;
+}
+.formCuentaMedica > div:nth-child(1){
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.formCuentaMedica > div:nth-child(6){
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.formCuentaMedica .select2-selection__rendered{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    height: 47px;
+    text-align: left;
+}
+.documentacion h3{
+    margin-bottom: 30px;
+}
+.documentacion .select2-selection__rendered{
+    text-align: left;
+}
+.documentacion .inputFile{
+    width: 80%;
+    max-width: 80%;
+    margin: 0 auto;
+}
+.documentacion .inputFile label{
+    border: 1px solid #ccc;
+    padding: 15px
+}
+
+.documentosAdjuntos .dataTables_info, .documentosAdjuntos .dataTables_paginate{
+    display: none;
+}
+.cuentaMedica .btn-primary{
+    display: block;
+    margin: 50px auto 0;
+    width: max-content;
+}
+
+
+/*** DatepickerStyles ***/
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    border: 1px solid var(--grisMedio);
+    background: var(--grisMedio);
+    color: var(--colorTexto);
+}
+.ui-state-active, .ui-widget-content .ui-state-active{
+    border: 1px solid #2298a9;
+    background: #2298a9;
+}
+
+.calendarInput{
+    position: relative;
+}
+.calendarInput img{
+    position: absolute;
+    right: 20px;
+    top: 16px;
+}
+
+.active-menu{
+    border-color: var(--colorPrimario)!important;
+}

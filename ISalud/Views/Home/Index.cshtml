@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Css
+{
+    <link href="~/vendors/datatables/responsive.dataTables.min.css" rel="stylesheet" />
+    <link href="~/vendors/select2/css/select2.min.css" rel="stylesheet" />
+    <link href="~/vendors/flatpickr/flatpickr.min.css" rel="stylesheet" />
+}
+
+
+
+
+<header>
+    <div class="center">
+        <a href="/" class="logo"><img src="/img/logo.svg" alt="Logo Isapre Codelco"></a>
+        <nav class="menu-principal">
+            <!--<img src="/img/icono-menu.svg" alt="Icono menu" class="icono-menu" id="showMenu">-->
+            <div class="menu" style="display: none;" id="menuPrincipal">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="@Url.Action("Index", "CobrarFactura")" name="menu">Cobrar Factura</a></li>
+                    <li><a href="@Url.Action("Index", "ConsultaCobranza")" name="menu">Consultar estado de cobranza</a></li>
+                    <li><a href="@Url.Action("Index", "CalcularMontos")" name="menu">Calcular monto a facturar</a></li>
+                    <li><<a href="@Url.Action("Index", "ConsultaBeneficiario")" name="menu">Consulta Beneficiario</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="datos-usuario">
+            <ul>
+                <li><img src="/img/i-prestador.svg" alt="icono prestador">  12345678-9 - Clínica BíoBio</li>
+                <li><img src="/img/i-usuario.svg" alt="Icono usuario">  Pedro Lorca <a href="#" class="i-off"><img src="/img/i-off.svg"></a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<main class="center main-menu">
+    <h1 class="text-center">Portal Pago prestadores</h1>
+    <div class="grid-menu">
+        <div>
+            <a href="@Url.Action("Index", "CobrarFactura")" name="menu"></a>
+            <img src="/img/i-cobrar-factura.svg" alt="cobrar factura">
+            <h3>Cobrar factura</h3>
+        </div>
+        <div>
+            <a href="@Url.Action("Index", "CalcularMontos")" name="menu"></a>
+            <img src="/img/i-calcular-monto.svg" alt="calcular montos">
+            <h3>Calcular monto a <br> facturar</h3>
+        </div>
+        <div>
+            <a href="@Url.Action("Index", "ConsultaCobranza")" name="menu"></a>
+            <img src="/img/i-consultar-cobranza.svg" alt="cobrar factura">
+            <h3>Consultar estado <br> de cobranza</h3>
+        </div>
+        <div>
+            <a href="@Url.Action("Index", "ConsultaBeneficiario")" name="menu"></a>
+            <img src="/img/i-consulta-beneficiario.svg" alt="cobrar factura">
+            <h3>Consulta <br> beneficiario</h3>
+        </div>
+    </div>
+
+
+</main>
+
+
+
+@section JavaScript
+{
+    <script src="~/vendors/moment/moment-with-locales.min.js"></script>
+    <script src="~/vendors/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/vendors/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/vendors/datatables-buttons/dataTables.buttons.min.js"></script>
+    <script src="~/vendors/datatables-buttons/buttons.print.min.js"></script>
+    <script src="~/vendors/jszip/jszip.min.js"></script>
+    <script src="~/vendors/datatables-buttons/buttons.html5.min.js"></script>
+    <script src="~/vendors/select2/js/select2.min.js"></script>
+    <script src="~/vendors/flatpickr/flatpickr.min.js"></script>
+    <script src="~/vendors/flatpickr/l10n/es.js"></script>
+    <script src="~/vendors/jquery-mask-plugin/jquery.mask.min.js"></script>
+    <script src="~/vendors/sweetalert2/sweetalert2.min.js"></script>
+
+    @*<script src="~/js/Sitio/sitio.js"></script>*@
+    <script src="~/js/Sitio/Home.js"></script>
+
+}

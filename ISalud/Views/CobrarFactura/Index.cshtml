@@ -1,0 +1,277 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Isapre Codelco</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Datatable-->
+    <link rel="stylesheet" href="/js/datatable/datatables.min.css">
+    <!-- Jquery Datepicker -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/animate.css">
+
+
+</head>
+<body>
+    <header>
+        <div class="center">
+            <a href="/" class="logo"><img src="/img/logo.svg" alt="Logo Isapre Codelco"></a>
+            <nav class="menu-principal">
+                <img src="/img/icono-menu.svg" alt="Icono menu" class="icono-menu" id="showMenu">
+                <div class="menu" style="display: none;" id="menuPrincipal">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/cobrar-factura.html">Cobrar Factura</a></li>
+                        <li><a href="/consultar-cobranza.html">Consultar estado de cobranza</a></li>
+                        <li><a href="/calcular-monto.html">Calcular monto a facturar</a></li>
+                        <li><a href="/consulta-beneficiario.html">Consulta Beneficiario</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="datos-usuario">
+                <ul>
+                    <li><img src="/img/i-prestador.svg" alt="icono prestador">  12345678-9 - Clínica BíoBio</li>
+                    <li><img src="/img/i-usuario.svg" alt="Icono usuario">  Pedro Lorca <a href="#" class="i-off"><img src="/img/i-off.svg"></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="volver">
+        <div class="center">
+            <a href="/"><img src="/img/i-volver.svg"> Volver</a>
+        </div>
+    </div>
+    <main class="center consulta-beneficiario">
+        <h1>Cobrar nueva factura</h1>
+        <div class="buscador filtros-cobrarfactura">
+            <form>
+                <div><input type="text" placeholder="Nº de factura"></div>
+                <div class="dateInput">
+                    <input type="text" placeholder="Fecha inicio" class="datepicker">
+                    <img src="/img/i-calendar.svg">
+                </div>
+                <div class="dateInput">
+                    <input type="text" placeholder="Fecha fin" class="datepicker">
+                    <img src="/img/i-calendar.svg">
+                </div>
+                <button><img src="/img/i-buscar.svg"><button>
+            </form>
+        </div>
+
+        <table id="myTable" class="cobrarFactura display">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Rut <br> prestador</th>
+                    <th>Nombre <br> prestador</th>
+                    <th>Nº factura</th>
+                    <th>Fecha <br> emisión</th>
+                    <th>Tipo de <br> factura</th>
+                    <th>Monto <br> excento</th>
+                    <th>Monto <br> afecto</th>
+                    <th>IVA</th>
+                    <th>Total <br> a pagar</th>
+                    <th>Descuento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <label class="radio-button">
+                            <input type="radio" name="radio">
+                            <span class="label-visible">
+                                <span class="fake-radiobutton"></span>
+                            </span>
+                        </label>
+                    </td>
+                    <td>65.987.456-9</td>
+                    <td>Clínica Santa María </td>
+                    <td>32323898</td>
+                    <td>21-01-2020</td>
+                    <td>Tipo de factura</td>
+                    <td>$98.987.456</td>
+                    <td>$87.438.424</td>
+                    <td>$44.987.567</td>
+                    <td>$100.000.000</td>
+                    <td>$12.987.345</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="radio-button">
+                            <input type="radio" name="radio">
+                            <span class="label-visible">
+                                <span class="fake-radiobutton"></span>
+                            </span>
+                        </label>
+                    </td>
+                    <td>65.987.456-9</td>
+                    <td>Clínica Santa María </td>
+                    <td>32323898</td>
+                    <td>21-01-2020</td>
+                    <td>Tipo de factura</td>
+                    <td>$98.987.456</td>
+                    <td>$87.438.424</td>
+                    <td>$44.987.567</td>
+                    <td>$100.000.000</td>
+                    <td>$12.987.345</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="radio-button">
+                            <input type="radio" name="radio">
+                            <span class="label-visible">
+                                <span class="fake-radiobutton"></span>
+                            </span>
+                        </label>
+                    </td>
+                    <td>65.987.456-9</td>
+                    <td>Clínica Santa María </td>
+                    <td>32323898</td>
+                    <td>21-01-2020</td>
+                    <td>Tipo de factura</td>
+                    <td>$98.987.456</td>
+                    <td>$87.438.424</td>
+                    <td>$44.987.567</td>
+                    <td>$100.000.000</td>
+                    <td>$12.987.345</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="radio-button">
+                            <input type="radio" name="radio">
+                            <span class="label-visible">
+                                <span class="fake-radiobutton"></span>
+                            </span>
+                        </label>
+                    </td>
+                    <td>65.987.456-9</td>
+                    <td>Clínica Santa María </td>
+                    <td>32323898</td>
+                    <td>21-01-2020</td>
+                    <td>Tipo de factura</td>
+                    <td>$98.987.456</td>
+                    <td>$87.438.424</td>
+                    <td>$44.987.567</td>
+                    <td>$100.000.000</td>
+                    <td>$12.987.345</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="radio-button">
+                            <input type="radio" name="radio">
+                            <span class="label-visible">
+                                <span class="fake-radiobutton"></span>
+                            </span>
+                        </label>
+                    </td>
+                    <td>65.987.456-9</td>
+                    <td>Clínica Santa María </td>
+                    <td>32323898</td>
+                    <td>21-01-2020</td>
+                    <td>Tipo de factura</td>
+                    <td>$98.987.456</td>
+                    <td>$87.438.424</td>
+                    <td>$44.987.567</td>
+                    <td>$100.000.000</td>
+                    <td>$12.987.345</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="radio-button">
+                            <input type="radio" name="radio">
+                            <span class="label-visible">
+                                <span class="fake-radiobutton"></span>
+                            </span>
+                        </label>
+                    </td>
+                    <td>65.987.456-9</td>
+                    <td>Clínica Santa María </td>
+                    <td>32323898</td>
+                    <td>21-01-2020</td>
+                    <td>Tipo de factura</td>
+                    <td>$98.987.456</td>
+                    <td>$87.438.424</td>
+                    <td>$44.987.567</td>
+                    <td>$100.000.000</td>
+                    <td>$12.987.345</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="radio-button">
+                            <input type="radio" name="radio">
+                            <span class="label-visible">
+                                <span class="fake-radiobutton"></span>
+                            </span>
+                        </label>
+                    </td>
+                    <td>65.987.456-9</td>
+                    <td>Clínica Santa María </td>
+                    <td>32323898</td>
+                    <td>21-01-2020</td>
+                    <td>Tipo de factura</td>
+                    <td>$98.987.456</td>
+                    <td>$87.438.424</td>
+                    <td>$44.987.567</td>
+                    <td>$100.000.000</td>
+                    <td>$12.987.345</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="radio-button">
+                            <input type="radio" name="radio">
+                            <span class="label-visible">
+                                <span class="fake-radiobutton"></span>
+                            </span>
+                        </label>
+                    </td>
+                    <td>65.987.456-9</td>
+                    <td>Clínica Santa María </td>
+                    <td>32323898</td>
+                    <td>21-01-2020</td>
+                    <td>Tipo de factura</td>
+                    <td>$98.987.456</td>
+                    <td>$87.438.424</td>
+                    <td>$44.987.567</td>
+                    <td>$100.000.000</td>
+                    <td>$12.987.345</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/cobrar-factura-index.html" class="btn-primary" id="btn-cobrar" style="margin-top: 30px; display: none;">Cobrar factura</a>
+
+    </main>
+
+
+
+
+    <script src="/js/jquery-v3.5.1.js"></script>
+    <script src="/js/app.js"></script>
+    <!-- Datatable-->
+    <script src="/js/datatable/datatables.min.js"></script>
+    <script src="/js/datatable/init.js"></script>
+    <!-- Jquery Datepicker -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/js/jquerydatepicker.js"></script>
+    <script>$(document).on('click', '.radio-button', function () {
+                $('#btn-cobrar').show();
+                $('#btn-cobrar').addClass('animate__animated animate__fadeIn');
+            })</script>
+</body>
+</html>
+

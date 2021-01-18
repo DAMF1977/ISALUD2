@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Css
+{
+    <link href="~/vendors/datatables/responsive.dataTables.min.css" rel="stylesheet" />
+    <link href="~/vendors/select2/css/select2.min.css" rel="stylesheet" />
+    <link href="~/vendors/flatpickr/flatpickr.min.css" rel="stylesheet" />
+}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Isapre Codelco</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/animate.css">
+
+    <script src="/js/jquery-v3.5.1.js"></script>
+    <script src="/js/app.js"></script>
+</head>
+<body>
+    <header>
+        <div class="center">
+            <a href="/" class="logo"><img src="/img/logo.svg" alt="Logo Isapre Codelco"></a>
+            <nav class="menu-principal">
+                <img src="/img/icono-menu.svg" alt="Icono menu" class="icono-menu" id="showMenu">
+                <div class="menu" style="display: none;" id="menuPrincipal">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/cobrar-factura.html">Cobrar Factura</a></li>
+                        <li><a href="/consultar-cobranza.html">Consultar estado de cobranza</a></li>
+                        <li><a href="/calcular-monto.html">Calcular monto a facturar</a></li>
+                        <li><a href="/consulta-beneficiario.html">Consulta Beneficiario</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="datos-usuario">
+                <ul>
+                    <li><img src="/img/i-prestador.svg" alt="icono prestador">  12345678-9 - Clínica BíoBio</li>
+                    <li><img src="/img/i-usuario.svg" alt="Icono usuario">  Pedro Lorca <a href="#" class="i-off"><img src="/img/i-off.svg"></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="volver">
+        <div class="center">
+            <a href="/"><img src="/img/i-volver.svg"> Volver</a>
+        </div>
+    </div>
+    <main class="center-main">
+        <h1 class="text-center">Consulta Beneficiario</h1>
+        <div class="buscador">
+            <form>
+                <input id="txtRutBeneficiario" name="txtRutBeneficiario" type="text" placeholder="Ingrese rut del beneficiario" required />
+                <button id="btn-buscar" type="button"><img src="/img/i-buscar.svg"> </button>
+            </form>
+        </div>
+        <div class="resultado-busqueda" id="resultado-busqueda" style="display: none;">
+            <h3 class="text-center">Datos del beneficiario</h3>
+            <div class="datos">
+                <div>
+                    <b>Nombre</b>
+
+
+                    <p id="txtNombre" name="txtNombre"></p>
+                   
+                </div>
+                <div>
+                    <b>Rut</b>
+
+                    <p id="txtRut" name="txtRut"></p>
+                </div>
+                <div>
+                    <b>Tipo beneficiario</b>
+                    <p id="txtTipoBeneficiario" name="txtTipoBeneficiario"></p>
+                </div>
+                <div>
+                    <b>Plan de salud</b>
+                    <p id="txtPlanSalud" name="txtPlanSalud"></p>
+                </div>
+                <div>
+                    <b>Isapre</b>
+                    <p id="txtIsapre" name="txtIsapre"></p>
+                </div>
+                <div class="ubicacionDato">
+                    <b>Plan Proterillo</b>
+                    <p id="txtPlanProterillo" name="txtPlanProterillo"></p>
+                </div>
+                <div>
+                    <b>Plan de salud</b>
+                    <p id="txtPlanSalud2" name="txtPlanSalud2"></p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+@section JavaScript
+{
+    <script src="~/vendors/moment/moment-with-locales.min.js"></script>
+    <script src="~/vendors/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/vendors/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/vendors/datatables-buttons/dataTables.buttons.min.js"></script>
+    <script src="~/vendors/datatables-buttons/buttons.print.min.js"></script>
+    <script src="~/vendors/jszip/jszip.min.js"></script>
+    <script src="~/vendors/datatables-buttons/buttons.html5.min.js"></script>
+    <script src="~/vendors/select2/js/select2.min.js"></script>
+    <script src="~/vendors/flatpickr/flatpickr.min.js"></script>
+    <script src="~/vendors/flatpickr/l10n/es.js"></script>
+    <script src="~/vendors/jquery-mask-plugin/jquery.mask.min.js"></script>
+    <script src="~/vendors/sweetalert2/sweetalert2.min.js"></script>
+
+    @*<script src="~/js/Sitio/sitio.js"></script>*@
+    <script src="~/js/Sitio/ConsultaBeneficiario.js"></script>
+
+}
+
