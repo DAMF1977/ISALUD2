@@ -110,7 +110,7 @@ $(document).ready(function () {
     });
 
 
-  
+
 
     //Funciones
     function CargarBeneficiario() {
@@ -134,17 +134,21 @@ $(document).ready(function () {
                 $('.page-loader').fadeOut();
             },
             success: function (response) {
-              
+
 
                 $('#txtNombre').html(response.aaData.Nombre);
-
-                $('#txtRut').html(response.aaData.Rut);
+                if (response.aaData.Rut == '') {
+                    $('#txtRut').html('');
+                }
+                else {
+                    $('#txtRut').html(response.aaData.Rut + '-' + response.aaData.Dv);
+                }
                 $('#txtTipoBeneficiario').html(response.aaData.Tipo);
                 $('#txtPlanSalud').html(response.aaData.PlanCodigo);
                 $('#txtIsapre').html(response.aaData.Isapre);
-                    $('#txtPlanProterillo').val("");
-                    $('#txtPlanSalud2').val("");
-              
+                $('#txtPlanPotrerillo').html("");
+                $('#txtFechaInicio').html(response.aaData.InicioVigencia);
+
                 $('#resultado-busqueda').change();
 
 
