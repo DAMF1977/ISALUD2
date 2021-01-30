@@ -18,5 +18,5 @@ yearSuffix: ''
 };
 $.datepicker.setDefaults($.datepicker.regional['es']);
 $(function () {
-$(".datepicker").datepicker();
+    $(".datepicker").datepicker();
 });

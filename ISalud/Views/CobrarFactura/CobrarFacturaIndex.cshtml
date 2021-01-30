@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "CobrarFacturaIndex";
+    Layout = "~/Views/Shared/_LayoutSitio.cshtml";
+}
+
+<main class="center text-center animate__animated animate__fadeInUp">
+    <h1>¿Cómo desea cobrar la factura?</h1>
+    <div class="mainFactura">
+        <div class="seleccion-modo-cobro" rel="bono">
+            <img src="~/img/i-bono.svg" alt="cobrar factura con bono">
+            <h3>Con bono</h3>
+        </div>
+        <div class="seleccion-modo-cobro" rel="archivo">
+            <img src="~/img/i-archivo.svg" alt="Cobrar factura con archivo">
+            <h3>Con archivo</h3>
+        </div>
+        <div class="seleccion-modo-cobro" rel="cuenta">
+            <a></a>
+            <img src="~/img/i-cuentamedica.svg" alt="Cobrar factura con cuenta médica">
+            <h3>Con cuenta <br> médica</h3>
+        </div>
+    </div>
+    <button id="btn-cobrar-2" class="btn-primary" style="margin-top: 30px;display: none;">Cobrar factura</button>
+</main>
+
+<script src="~/js/Sitio/CobrarNuevaFactura.js"></script>

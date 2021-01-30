@@ -1,0 +1,86 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Isapre Codelco</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Jquery Datepicker -->
+    @*<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">*@
+
+    <!-- Jquery Datepicker -->
+    <link rel="stylesheet" href="~/js/jquery-ui/jquery-ui.min.css" />
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="~/css/estilos.css">
+    <link rel="stylesheet" href="~/css/animate.css">
+    <link rel="stylesheet" href="~/css/loading-modal.css">
+
+    <!-- Datatable-->
+    <link rel="stylesheet" href="~/js/datatable/datatables.min.css">
+
+    <link rel="stylesheet" href="~/vendors/sweetalert2/sweetalert2.min.css" />
+
+</head>
+<body>
+    <header>
+        <div class="center">
+            <a href="~/" class="logo"><img src="~/img/logo.svg" alt="Logo Isapre Codelco"></a>
+            <nav class="menu-principal">
+                <img src="~/img/icono-menu.svg" alt="Icono menu" class="icono-menu" id="showMenu">
+                <div class="menu" style="display: none;" id="menuPrincipal">
+                    <ul>
+                        <li><a href="~/">Home</a></li>
+                        <li><a href="~/CobrarFactura">Cobrar Factura</a></li>
+                        <li><a href="~/ConsultaCobranza">Consultar estado de cobranza</a></li>
+                        <li><a href="~/CalcularMontos">Calcular monto a facturar</a></li>
+                        <li><a href="~/ConsultaBeneficiario">Consulta Beneficiario</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="datos-usuario">
+                <ul>
+                    <li><img src="~/img/i-prestador.svg" alt="icono prestador">  12345678-9 - Clínica BíoBio</li>
+                    <li><img src="~/img/i-usuario.svg" alt="Icono usuario">  Pedro Lorca <a href="#" class="i-off"><img src="~/img/i-off.svg"></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="volver">
+        <div class="center">
+            <a href="~/"><img src="~/img/i-volver.svg"> Volver</a>
+        </div>
+    </div>
+
+    <script src="~/js/jquery-v3.5.1.js"></script>
+    <script src="~/js/app.js"></script>
+
+    <!-- Jquery Datepicker -->
+    @*<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>*@
+
+    <!-- Jquery Datepicker -->
+    <script src="~/js/jquery-ui/jquery-ui.min.js"></script>
+
+    @*<script src="~/js/jquerydatepicker.js"></script>*@
+    <script src="~/js/moment.min.js"></script>
+    <script src="~/vendors/sweetalert2/sweetalert2.min.js"></script>
+
+    @RenderBody()
+
+    <!-- Datatable-->
+    <script src="~/js/datatable/datatables.min.js"></script>
+    <script src="~/js/datatable/init.js"></script>
+
+    <script src="~/js/Sitio/Global.js"></script>
+
+    @Html.Partial("_LoadingModal")
+
+    @RenderSection("Javascript", required: false)
+</body>
+</html>

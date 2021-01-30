@@ -141,6 +141,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="css\animate.css" />
     <Content Include="css\estilos.css" />
+    <Content Include="css\loading-modal.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -183,8 +184,17 @@
     <Content Include="js\datatable\init.js" />
     <Content Include="js\inputfile\fileinput.css" />
     <Content Include="js\inputfile\fileinput.js" />
+    <Content Include="js\jquery-ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_555555_256x240.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="js\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="js\jquery-ui\jquery-ui.min.css" />
+    <Content Include="js\jquery-ui\jquery-ui.min.js" />
     <Content Include="js\jquery-v3.5.1.js" />
     <Content Include="js\jquerydatepicker.js" />
+    <Content Include="js\moment.min.js" />
     <Content Include="js\select2-4.0.7\dist\css\select2.css" />
     <Content Include="js\select2-4.0.7\dist\css\select2.min.css" />
     <Content Include="js\select2-4.0.7\dist\js\select2-init.js" />
@@ -193,7 +203,10 @@
     <Content Include="js\select2-4.0.7\dist\js\select2.js" />
     <Content Include="js\select2-4.0.7\dist\js\select2.min.js" />
     <Content Include="js\select2-4.0.7\Gruntfile.js" />
+    <Content Include="js\Sitio\CobrarNuevaFactura.js" />
     <Content Include="js\Sitio\ConsultaBeneficiario.js" />
+    <Content Include="js\Sitio\ExitoCobroFactura.js" />
+    <Content Include="js\Sitio\Global.js" />
     <Content Include="js\Sitio\Home.js" />
     <Content Include="js\Sitio\login.js" />
     <Content Include="js\Sitio\sitio.js" />
@@ -261,6 +274,12 @@
     <Content Include="Views\CobrarFactura\Index.cshtml" />
     <Content Include="Views\ConsultaCobranza\Index.cshtml" />
     <Content Include="Views\ConsultaBeneficiario\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutSitio.cshtml" />
+    <Content Include="Views\Shared\_LoadingModal.cshtml" />
+    <Content Include="Views\CobrarFactura\CobrarFacturaIndex.cshtml" />
+    <Content Include="Views\CobrarFactura\CobrarFacturaBono.cshtml" />
+    <Content Include="Views\CobrarFactura\ExitoCobro.cshtml" />
+    <Content Include="Views\CobrarFactura\ErrorCobro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -278,6 +297,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{78cd655f-6e50-4bfa-8644-fe9d8c1e25d4}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EL\EL.csproj">
+      <Project>{6968f7af-d0b0-499a-b9ab-c26ad48472e9}</Project>
+      <Name>EL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 using System.Web.Security;
+using BL.Modelos;
+using System;
+using EL.Entradas;
 
 namespace ISalud.Controllers
 {
@@ -31,14 +34,14 @@ namespace ISalud.Controllers
                 if (Resp_Auth.StatusCode == HttpStatusCode.OK)
                 {
                     Session["AUTH"] = Resp_Auth.Content.ToString().Replace(@"""", @"");
-
+                    var session = new DtoSessionUsuario() { TokenJWT = Resp_Auth.Content.ToString().Replace(@"""", @"") };
+                    MSession.RegisterSession(session);
 
                     //PreferenciasUsuario pref = new PreferenciasUsuario
                     //{
                     //    PRU_DOMINIO = Info_Usuario.DOMINIO,
                     //    PRU_USUARIO_ID = Info_Usuario.USUARIO
                     //};
-
 
                     ////Preferencias de usuario
                     //Json_Obj = JsonConvert.SerializeObject(pref);
@@ -54,19 +57,23 @@ namespace ISalud.Controllers
                     //    return resp;
 
                     //}
+
                     FormsAuthentication.SetAuthCookie(Info_Usuario.Usuario, true);
                     Session["USUARIO"] = Info_Usuario.Usuario.ToUpper();
+
                     return Json(new { aaData = "" }, JsonRequestBehavior.AllowGet);
                     //return Json(Url.Action("Index", "Home"));
                 }
                 else
                 {
-                    ContentResult resp = Content("Usuario, Credenciales invalidas");
+                    //ContentResult resp = Content("Usuario, Credenciales invalidas");
+                    ContentResult resp = Content(Resp_Auth.ErrorMessage);
                     HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                     return resp;
                 }
+
             }
-            catch
+            catch(Exception ex)
             {
                 ContentResult resp = Content("Usuario, Credenciales invalidas");
                 HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;

@@ -1,0 +1,13 @@
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\BL.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\BL.pdb
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\EL.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\Newtonsoft.Json.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\RestSharp.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\EL.pdb
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\Newtonsoft.Json.xml
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\RestSharp.xml
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\obj\Debug\BL.csprojAssemblyReference.cache
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\obj\Debug\BL.csproj.CopyComplete
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\obj\Debug\BL.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\obj\Debug\BL.pdb
