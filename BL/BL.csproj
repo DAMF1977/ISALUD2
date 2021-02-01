@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modelos\MCalcularMontos.cs" />
+    <Compile Include="Modelos\MConsultaCobranza.cs" />
     <Compile Include="Modelos\MCobroFactura.cs" />
     <Compile Include="Modelos\MSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
