@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "CobrarFacturaArchivo";
+    Layout = "~/Views/Shared/_LayoutSitio.cshtml";
+}
+
+<style>
+    input[type=checkbox] {
+        /* Double-sized Checkboxes */
+        -ms-transform: scale(2); /* IE */
+        -moz-transform: scale(2); /* FF */
+        -webkit-transform: scale(2); /* Safari and Chrome */
+        -o-transform: scale(2); /* Opera */
+        padding: 10px;
+    }
+</style>
+
+<main class="center text-center">
+    <div id="content-filtro" class="animate__animated animate__fadeInRight">
+        <h1>Cobrar factura con Archivo</h1>
+
+        <p>Antes de mostrar los datos debe seleccionar una opción</p>
+
+        <!-- Filtros antes de mostrar información-->
+        <!-- Ingreso de archivo antes de mostrar información-->
+
+        <div class="buscador">
+            <div>
+                <div class="inputFile">
+                    <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" multiple style="display: none;" />
+                    <label for="file-3"><span>Click aquí para subir archivo</span></label>
+                    <img src="/img/i-upload.svg" alt="icono subir archivo">
+                </div>
+
+            </div>
+
+        </div>
+        <p>Adjuntar archivo excel con columna nº de bono</p>
+        <br />
+        <a class="btn-primary" id="btn-continuar2" style="display: none;">Continuar</a>
+    </div>
+
+    <!-- Información filtrada -->
+
+    <main class="center-main text-center" id="contenido-filtrado" style="display: none;">
+        <h1>Cobrar factura con archivo</h1>
+        @*<div class="buscador filtrosFacturaBono">
+            <form action="#">
+                <div class="checkBox">
+                    <label class="radio-button">
+                        <input id="rbTodosBonos" type="radio" name="radio">
+                        <span class="label-visible">
+                            <span class="fake-radiobutton"></span>
+                        </span>
+                        Todos los bonos
+                    </label>
+                </div>
+                <div>
+                    <input id="txtRutBeneficiarioFiltro" type="text" placeholder="Rut beneficiario">
+                </div>
+                <div>
+                    <input id="txtNroCuentaFiltro" type="text" class="FormatNumber" placeholder="Nº de cuenta médica">
+                </div>
+                <button id="btn-filtro" type="button"><img src="~/img/i-buscar.svg"></button>
+            </form>
+        </div>*@
+        <!-- Contenedor tabla y resumen -->
+        <div class="contenedorTablaResumen">
+
+            <table id="table-list-archivos" class="cobrarBonoTabla display">
+                <thead id="table-list-head-bonos">
+                </thead>
+                <tbody id="table-list-body-bonos">
+                </tbody>
+            </table>
+
+            <div class="resumen">
+                <div class="info">
+                    <h3>Resumen</h3>
+                    <div><span>Nº de factura:</span> <b><label id="lblNroFactura"></label></b></div>
+                    <div><span>Valor factura:</span> <b><label id="lblValorFactura"></label></b></div>
+                    <div><span>Sumatoria bonos <br> seleccionados:</span> <b style="top: 20px"><label id="lblTotalSumaBonos">0</label></b></div>
+                </div>
+                <button id="btnModalCobro" class="btn-primary">Cobrar bonos seleccionados</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Popup Confirmación datos-->
+    <div class="overlay" style="display: none;">
+        <div class="contenedor-popup">
+            <h3>Confirmación</h3>
+
+            <div class="datosFactura">
+                <div>
+                    <span>Nº de factura</span>
+                    <b><label id="lblNroFacturaModal">55</label></b>
+                </div>
+                <div>
+                    <span>Se cobra con</span>
+                    <b><label id="lblTipoCobroModal">Bono</label></b>
+                </div>
+                <div>
+                    <span>Fecha</span>
+                    <b><label id="lblFechaCobroModal">21-01-2020</label></b>
+                </div>
+                <div>
+                    <span>Monto</span>
+                    <b><label id="lblMontoCobroModal">$4.529.434</label></b>
+                </div>
+            </div>
+
+            <button id="btnCobrarFacturaModal" class="btn-primary">Cobrar factura</button>
+            <a id="btnCancelarModal" href="javascript:void(0);" class="cancelarEnlace">Cancelar</a>
+        </div>
+    </div>
+
+</main>
+
+<script src="~/js/Sitio/CobrarNuevaFactura.js"></script>
