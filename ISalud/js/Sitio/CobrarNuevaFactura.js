@@ -147,6 +147,18 @@ var handlePagesStates = function () {
 
     }
 
+
+    $("#file-3").change(function () {
+        $('#btn-continuar2').show();
+        $('.contenedorTablaResumen').hide();
+        $('#btn-continuar2').addClass('animate__animated animate__fadeIn');
+
+    });
+
+
+
+
+
     function handleButtonsEvents() {
 
         $("#btnBuscar").on("click", function (e) {
@@ -171,7 +183,7 @@ var handlePagesStates = function () {
                         window.location.href = '/CobrarFactura/CobrarFacturaBono';
                         break;
                     case 'archivo':
-                        AlertInfo('infor', 'Información', 'Opción no disponible');
+                        window.location.href = '/CobrarFactura/CobrarFacturaArchivo';
                         break;
                     case 'cuenta':
                         AlertInfo('infor', 'Información', 'Opción no disponible');
@@ -250,6 +262,37 @@ var handlePagesStates = function () {
             }
 
         });
+
+
+
+        $(document).on('click', '#btn-continuar2', function (e) {
+
+            var continuar = true;
+            var objFiltro = handleGetFiltroCobro();
+            if (objFiltro != null) {
+
+   
+                if (continuar) {
+
+      
+                    $('#lblNroFactura').text(objFiltro.NroFactura);
+                    $('#lblValorFactura').text(`$${handleFormato.formatNumber.new(objFiltro.ValorFactura)}`);
+
+                    $('#content-filtro').addClass('animate__animated animate__fadeOutLeft');
+                    setTimeout(() => {
+                        $('#content-filtro').hide();
+                        $('#contenido-filtrado').show();
+                        $('#contenido-filtrado').addClass('animate__animated animate__fadeInRight');
+                    }, 500);
+
+                    handleCobrarFactura.ConsultaBonosParaCobro();
+
+                }
+
+            }
+
+        });
+
     }
 
     function handleSetFiltroCobro(value) {
