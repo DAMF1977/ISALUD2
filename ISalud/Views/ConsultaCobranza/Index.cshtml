@@ -1,248 +1,57 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSitio.cshtml";
 }
 
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Isapre Codelco</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Datatable-->
-    <link rel="stylesheet" href="/js/datatable/datatables.min.css">
-    <!-- Select 2 -->
-    <link rel="stylesheet" href="/js/select2-4.0.7/dist/css/select2.min.css">
-    <!-- Jquery Datepicker -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!-- Estilos -->
-    <link rel="stylesheet" href="/css/estilos.css">
-    <link rel="stylesheet" href="/css/animate.css">
+ 
 
-</head>
-<body>
-    <header>
-        <div class="center">
-            <a href="/" class="logo"><img src="/img/logo.svg" alt="Logo Isapre Codelco"></a>
-            <nav class="menu-principal">
-                <img src="/img/icono-menu.svg" alt="Icono menu" class="icono-menu" id="showMenu">
-                <div class="menu" style="display: none;" id="menuPrincipal">
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/cobrar-factura.html">Cobrar Factura</a></li>
-                        <li><a href="/consultar-cobranza.html">Consultar estado de cobranza</a></li>
-                        <li><a href="/calcular-monto.html">Calcular monto a facturar</a></li>
-                        <li><a href="/consulta-beneficiario.html">Consulta Beneficiario</a></li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="datos-usuario">
-                <ul>
-                    <li><img src="/img/i-prestador.svg" alt="icono prestador">  12345678-9 - Clínica BíoBio</li>
-                    <li><img src="/img/i-usuario.svg" alt="Icono usuario">  Pedro Lorca <a href="#" class="i-off"><img src="/img/i-off.svg"></a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
-    <!--[if lt IE 7]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <div class="volver">
-        <div class="center">
-            <a href="/"><img src="/img/i-volver.svg"> Volver</a>
-        </div>
-    </div>
-    <main class="center consulta-beneficiario">
-        <h1>Consultar estado de cobranza</h1>
-        <div class="buscador filtros-estado-cobranza">
-            <form>
-                <div><select style="width: 100%;"><option value="">Tipo de cobro</option></select></div>
-                <div><select style="width: 100%;"><option value="">Estado</option></select></div>
-                <div><input type="text" placeholder="Nº de cobranza"></div>
-                <div><input type="text" placeholder="Fecha ingreso cobranza" class="datepicker"><img src="/img/i-calendar.svg"></div>
-                <div><input type="text" placeholder="Nº factura"></div>
-                <button id="btn-buscar"><img src="/img/i-buscar.svg"><button>
-            </form>
-        </div>
-
-        <table id="myTable" class="display">
-            <thead>
-                <tr>
-                    <th>Nº factura</th>
-                    <th>Tipo de factura</th>
-                    <th>Nº de cobranza</th>
-                    <th>Fecha <br> Ing. Cobranza</th>
-                    <th>Estado</th>
-                    <th>Nº Comprobante <br> de ingreso</th>
-                    <th>Fecha <br> de pago</th>
-                    <th>Monto <br> de pago</th>
-                    <th>Forma <br> de pago</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Nº factura</td>
-                    <td>Tipo de factura</td>
-                    <td>22</td>
-                    <td>20-01-2020</td>
-                    <td>Estado</td>
-                    <td>55</td>
-                    <td>21-01-2020</td>
-                    <td>$5.000</td>
-                    <td>efectivo</td>
-                    <td><a href="#" class="btn-historial"><img src="/img/i-historial.svg"></a></td>
-                </tr>
-                <tr>
-                    <td>Nº factura</td>
-                    <td>Tipo de factura</td>
-                    <td>22</td>
-                    <td>20-01-2020</td>
-                    <td>Estado</td>
-                    <td>55</td>
-                    <td>21-01-2020</td>
-                    <td>$5.000</td>
-                    <td>efectivo</td>
-                    <td><a href="#" class="btn-historial"><img src="/img/i-historial.svg"></a></td>
-                </tr>
-                <tr>
-                    <td>Nº factura</td>
-                    <td>Tipo de factura</td>
-                    <td>22</td>
-                    <td>20-01-2020</td>
-                    <td>Estado</td>
-                    <td>55</td>
-                    <td>21-01-2020</td>
-                    <td>$5.000</td>
-                    <td>efectivo</td>
-                    <td><a href="#" class="btn-historial"><img src="/img/i-historial.svg"></a></td>
-                </tr>
-                <tr>
-                    <td>Nº factura</td>
-                    <td>Tipo de factura</td>
-                    <td>22</td>
-                    <td>20-01-2020</td>
-                    <td>Estado</td>
-                    <td>55</td>
-                    <td>21-01-2020</td>
-                    <td>$5.000</td>
-                    <td>efectivo</td>
-                    <td><a href="#" class="btn-historial"><img src="/img/i-historial.svg"></a></td>
-                </tr>
-                <tr>
-                    <td>Nº factura</td>
-                    <td>Tipo de factura</td>
-                    <td>22</td>
-                    <td>20-01-2020</td>
-                    <td>Estado</td>
-                    <td>55</td>
-                    <td>21-01-2020</td>
-                    <td>$5.000</td>
-                    <td>efectivo</td>
-                    <td><a href="#" class="btn-historial"><img src="/img/i-historial.svg"></a></td>
-                </tr>
-                <tr>
-                    <td>Nº factura</td>
-                    <td>Tipo de factura</td>
-                    <td>22</td>
-                    <td>20-01-2020</td>
-                    <td>Estado</td>
-                    <td>55</td>
-                    <td>21-01-2020</td>
-                    <td>$5.000</td>
-                    <td>efectivo</td>
-                    <td><a href="#" class="btn-historial"><img src="/img/i-historial.svg"></a></td>
-                </tr>
-                <tr>
-                    <td>Nº factura</td>
-                    <td>Tipo de factura</td>
-                    <td>22</td>
-                    <td>20-01-2020</td>
-                    <td>Estado</td>
-                    <td>55</td>
-                    <td>21-01-2020</td>
-                    <td>$5.000</td>
-                    <td>efectivo</td>
-                    <td><a href="#" class="btn-historial"><img src="/img/i-historial.svg"></a></td>
-                </tr>
-                <tr>
-                    <td>Nº factura</td>
-                    <td>Tipo de factura</td>
-                    <td>22</td>
-                    <td>20-01-2020</td>
-                    <td>Estado</td>
-                    <td>55</td>
-                    <td>21-01-2020</td>
-                    <td>$5.000</td>
-                    <td>efectivo</td>
-                    <td><a href="#" class="btn-historial"><img src="/img/i-historial.svg"></a></td>
-                </tr>
-            </tbody>
-        </table>
-    </main>
-    <!-- Pop Up -->
-    <div class="overlay" style="display: none;">
-        <div class="contenedor-popup">
-            <h3>Historial</h3>
+<main class="center consulta-beneficiario">
+    <h1>Consultar estado de cobranza</h1>
+    <div class="buscador filtros-estado-cobranza">
+        <form>
             <div>
-                <span>Nº de factura</span>
-                <b>55</b>
+                <select id="cmbTipoCobro" style="width: 100%;">
+                    <option value="">Tipo de cobro</option>
+                    <option value="1">Tipo Cobro 1</option>
+                    <option value="2">Tipo Cobro 2</option>
+                    <option value="3">Tipo Cobro 3</option>
+                </select>
             </div>
-            <div class="scroll">
-                <div>
-                    <span>Fecha de factura</span>
-                    <b>21-01-2020</b>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-                </div>
-                <div>
-                    <span>Fecha de factura</span>
-                    <b>21-01-2020</b>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-                </div>
-                <div>
-                    <span>Fecha de factura</span>
-                    <b>21-01-2020</b>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-                </div>
+            <div>
+                <select id="cmbEstado" style="width: 100%;">
+                    <option value="">Estado</option>
+                    <option value="1">Estado 1</option>
+                    <option value="2">Estado 2</option>
+                    <option value="3">Estado 3</option>
+                    <option value="4">Estado 4</option>
+                    <option value="5">Estado 5</option>
+                    <option value="6">Estado 6 </option>
+                    <option value="7">Estado 7 </option>
+                    <option value="8">Estado 8 </option>
+                </select>
+
             </div>
-            <a href="#" class="btn-primary" id="closePopUp">Cerrar popup</a>
-        </div>
+            <div><input type="text" id="txtNroCobranza" class="inputText FormatNumber" placeholder="Nº de cobranza"></div>
+            <div class="dateInput">
+                <input id="txtFechaIni" type="text" placeholder="Fecha inicio" class="input-locked">
+                <img src="/img/i-calendar.svg">
+            </div>
+            <div class="dateInput">
+                <input id="txtFechaTermino" type="text" placeholder="Fecha fin" class="input-locked">
+                <img src="/img/i-calendar.svg">
+            </div>
+            <div><input type="text" id="txtNroFactura" class="inputText FormatNumber" placeholder="Nº factura"></div>
+            <button id="btn-filtro" type="button"><img src="~/img/i-buscar.svg"></button>
+        </form>
     </div>
 
+    <table id="table-list-principal" class="principalTabla display">
+        <thead id="table-list-head-principal">
+        </thead>
+        <tbody id="table-list-body-principal">
+        </tbody>
+    </table>
+</main>
 
-
-
-    <script src="/js/jquery-v3.5.1.js"></script>
-    <script src="/js/app.js"></script>
-    <!-- Datatable-->
-    <script src="/js/datatable/datatables.min.js"></script>
-    <script src="/js/datatable/init.js"></script>
-    <!-- Select 2-->
-    <script src="/js/select2-4.0.7/dist/js/select2.min.js"></script>
-    <!-- Jquery Datepicker -->
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="/js/jquerydatepicker.js"></script>
-    <!-- Incializadores -->
-    <script>//Select 2
-            $('select').select2({
-                minimumResultsForSearch: 8
-            });
-
-            //Popup
-            $(".btn-historial").click(function(){
-                $(".overlay").fadeIn(200);
-                event.preventDefault()
-            });
-            $("#closePopUp").click(function(){
-                $(".overlay").fadeOut(200);
-                event.preventDefault()
-            });</script>
-</body>
-</html>
-
+<script src="~/js/Sitio/ConsultaCobranza.js"></script>
