@@ -20,9 +20,18 @@ namespace BL.Modelos
         
         }
 
+        public List<int> ConsultaRutPrestadores() 
+        {
+            var lista = new List<int>() { 70905700, 78394040 };
+
+            return lista;
+        }
+
         public Respuesta ConsultaFacturas(DtoCobroFactura param)
         {
             Respuesta Respuesta = new Respuesta();
+
+            param.ListaRut = ConsultaRutPrestadores();
 
             var urlService = ConfigurationManager.ConnectionStrings["webAPI2"].ConnectionString;
             RestClient Client = new RestClient(urlService);

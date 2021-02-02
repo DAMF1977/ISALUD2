@@ -13,7 +13,7 @@
 ];
 
 var tableHeaderBonos = [
-    { Nombre: `<input id="chkTodos" type="checkbox" name="type" />`, MinWidth: "", MaxWidth: "", ClassName: "text-center" },
+    { Nombre: `<input id="chkTodos" type="checkbox" name="type" class="checkbox-body" />`, MinWidth: "", MaxWidth: "", ClassName: "text-center" },
     { Nombre: "Nº de bono", MinWidth: "", MaxWidth: "", ClassName: "text-center" },
     { Nombre: "Fecha de emisión", MinWidth: "", MaxWidth: "", ClassName: "text-center" },
     { Nombre: "Monto", MinWidth: "", MaxWidth: "", ClassName: "text-center" }
@@ -744,13 +744,19 @@ var handleDatatableBonos = function () {
             $('#table-list-body-bonos').html('');
         }
 
+        //chkTodos
+        if (IsNull(ListaItemsBonos) == null) {
+            $('#chkTodos').removeClass('checkbox-body');
+            $('#chkTodos').addClass('checkbox-head');
+        }
+
         $.each(ListaItemsBonos, function (i, element) {
 
             var checked = (element.Seleccionado) ? 'checked' : '';
             let row = '';
             row += `<tr>
                         <td width="10">
-                            <input class="select-bono" data-id="${element.NumeroBono}" type="checkbox" name="type" ${checked} />
+                            <input class="select-bono checkbox-body" data-id="${element.NumeroBono}" type="checkbox" ${checked} />
                         </td>
                         <td>${element.NumeroBono}</td>
                         <td>${moment(element.FechaEmision).format(Global.FormatoFecha)}</td>

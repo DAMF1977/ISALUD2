@@ -10,10 +10,7 @@ namespace EL.Entradas
     {
         public DtoCobroFactura() 
         {
-            ListaRut = new List<int>() { 70905700, 78394040 };
             Estado = 1;
-            //TipoCobro = 3;
-            //NroCobranza = 0;
         }
 
         public List<int> ListaRut { get; set; }
@@ -21,7 +18,5 @@ namespace EL.Entradas
         public string FechaInicio { get; set; }
         public string FechaTermino { get; set; }
         public long? NroFactura { get; set; }
-        //public long? TipoCobro { get; set; }
-        //public long? NroCobranza { get; set; }
     }
 }
