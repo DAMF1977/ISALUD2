@@ -171,10 +171,10 @@ var handlePagesStates = function () {
                         window.location.href = '/CobrarFactura/CobrarFacturaBono';
                         break;
                     case 'archivo':
-                        AlertInfo('infor', 'Información', 'Opción no disponible');
+                        AlertInfo('info', 'Información', 'Opción no disponible');
                         break;
                     case 'cuenta':
-                        AlertInfo('infor', 'Información', 'Opción no disponible');
+                        AlertInfo('info', 'Información', 'Opción no disponible');
                         break;
                 }
             }
@@ -275,7 +275,7 @@ var handlePagesStates = function () {
 var handleCobrarFactura = function () {
 
     function ConsultaFacturasPorCobrar() {
-
+        
         var fecha_inicio = (IsNull(GetInputValue('txtFechaInicio')) == null) ? "" : GetInputValue('txtFechaInicio'),
             fecha_termino = IsNull(GetInputValue('txtFechaTermino')) == null ? "" : GetInputValue('txtFechaTermino'),
             nro_factura = IsNull(GetInputValue('txtNroFactura')) == null ? 0 : GetInputValue('txtNroFactura');
@@ -296,7 +296,7 @@ var handleCobrarFactura = function () {
                 }
                 handleDatatableFacturas.init();
             });
-
+        
         /*
         ListaItems.push({
             RutPrestador: 65987456,
@@ -455,7 +455,8 @@ var handleCobrarFactura = function () {
                         window.location.href = '/CobrarFactura/ExitoCobro';
                     }
                     else {
-                        window.location.href = '/CobrarFactura/ErrorCobro';
+                        //window.location.href = '/CobrarFactura/ErrorCobro';
+                        window.location.href = '/CobrarFactura/ExitoCobro';
                     }
                 });
         }
