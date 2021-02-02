@@ -4,7 +4,7 @@
     { Nombre: "Nº de cobranza", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
     { Nombre: "Fecha Ing.Cobranza", MinWidth: "", MaxWidth: "", ClassName: "text-center" },
     { Nombre: "Estado", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
-    { Nombre: "Nº Comprobante de ingreso", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
+    { Nombre: "Nº Comprobante de egreso", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
     { Nombre: "Fecha pago", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
     { Nombre: "Monto pago", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
     { Nombre: "Forma pago", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
@@ -35,11 +35,17 @@ $(function () {
             
 
             var params = {
-
+                "Estado": 1,
+                "NroFactura": IsNull(GetInputValue('txtNroFactura')) == null ? 0 : GetInputValue('txtNroFactura'),
+                "FechaInicio": (IsNull(GetInputValue('txtFechaIni')) == null) ? "" : GetInputValue('txtFechaIni'), 
+                "FechaTermino": (IsNull(GetInputValue('txtFechaTermino')) == null) ? "" : GetInputValue('txtFechaTermino'), 
+                "TipoCobro": $("#cmbTipoCobro").val(),
+                "NroCobranza": IsNull(GetInputValue('txtNroFactura')) == null ? 0 : GetInputValue('txtNroFactura'),
+                "EstadoDT": $("#cmbEstado").val()
                // FechaInicio: "01/04/2019",
                 //FechaTermino: "30/04/2020",
-                NroFactura: 0,
-                Estado: 1
+           
+                
                 //FechaInicio: fecha_inicio,
                 //FechaTermino: fecha_termino,
                 //NroFactura: nro_factura
@@ -111,11 +117,11 @@ $(function () {
                         <td>${element.FolioDT}</td>
                          <td>${element.DescripcionTipoDT}</td>
                          <td>${element.IdNroCaso}</td>
-                         <td></td>
+                         <td>${moment(element.FechaEmision, 'DD/MM/YYYY HH:mm:ss').format('DD-MM-YYYY')}</td>
                          <td>${element.Estado}</td>
                          <td>${element.ComprobanteEgreso.NComprobante}</td>
                          <td>${element.ComprobanteEgreso.FechaPago}</td>
-       <td>$${handleFormato.formatNumber.new(element.ComprobanteEgreso.MontoPago)}</td>
+                            <td>$${handleFormato.formatNumber.new(element.ComprobanteEgreso.MontoPago)}</td>
                          <td>${element.ComprobanteEgreso.Formapago}</td>
                          <td><a href="#" class="btn-historial"><img src="/img/i-historial.svg"></a></td>
                      </tr>`;
