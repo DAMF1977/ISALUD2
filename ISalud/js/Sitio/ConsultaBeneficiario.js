@@ -99,11 +99,130 @@ $(document).ready(function () {
         '</div>' +
         '</div>';
     moment.locale('es');
+    function GetInputValue(id) {
+        return $('#' + id).val();
+    }
+    function IsNull(value) {
+        if (value == '' || value == null || value == undefined || value == NaN || value == 'null') {
+            return null;
+        }
+        else {
+            return value;
+        }
+    }
+
+   
+
+
+    //Valida un Rut
+    function ValidarRut(intlargo) {
+        var validacionRut = {
+            resultado: false,
+            rut: 0,
+            dv: ""
+        }
+        var tmpstr = "";
+        var dv = 0;
+        var rut = "";
+        if (parseInt(intlargo) != 0) {
+            if (intlargo.length > 0) {
+                let crut = intlargo;
+                let largo = crut.length;
+                if (largo < 2)
+                    return validacionRut;
+                var chardv = '';
+                for (let i = 0; i < crut.length; i++)
+                    if (crut.charAt(i) != ' ' && crut.charAt(i) != '.' && crut.charAt(i) != '-' && !isNaN(parseInt(crut.charAt(i)))) tmpstr = tmpstr + crut.charAt(i);
+                    else if (crut.charAt(i).toUpperCase() == 'K')
+                        chardv = crut.charAt(i).toUpperCase();
+                tmpstr = Number(tmpstr).toString();
+                rut = tmpstr + chardv;
+                crut = tmpstr + chardv;
+                largo = crut.length;
+                rut = (largo > 2) ? crut.substring(0, largo - 1) : crut.charAt(0);
+                dv = crut.charAt(largo - 1);
+                if (rut == null || dv == null)
+                    return validacionRut;
+                var dvr = '0';
+                let suma = 0;
+                let mul = 2;
+                for (let i = rut.length - 1; i >= 0; i--) {
+                    suma = suma + parseInt(rut.charAt(i)) * mul;
+                    if (mul == 7)
+                        mul = 2;
+                    else
+                        mul++;
+                }
+                let res = suma % 11;
+                if (res == 1)
+                    dvr = 'k';
+                else if (res == 0)
+                    dvr = '0';
+                else {
+                    let dvi = 11 - res;
+                    dvr = dvi + "";
+                }
+                if (dvr != dv.toString().toLowerCase())
+                    return validacionRut;
+                var rut_final = "";
+                var num = 0;
+                var val = rut.length;
+                while (val != 0) {
+                    num++;
+                    if (num == 3) {
+                        rut_final = "" + rut[val - 1] + rut_final;
+                        num = 0;
+                    }
+                    else
+                        rut_final = rut[val - 1] + rut_final;
+                    val--;
+                }
+                validacionRut.rut = parseInt(rut_final);
+                validacionRut.dv = dv.toString();
+                validacionRut.resultado = true;
+                if (rut_final == '0-0')
+                    return '';
+                else
+                    return validacionRut;
+            }
+            else
+                return validacionRut;
+        }
+        else
+            return validacionRut;
+    }
+
+    //Asigna un valor aun input o combo box
+    function SetInputValue(inputType, inputId, inputValue) {
+        if (inputType.toLowerCase() == 'text') {
+            $(`#${inputId}`).val(inputValue);
+        }
+        //if (inputType.toLowerCase() == 'select') {
+        //    $(`#${inputId}`).val(inputValue).trigger('chosen:updated');
+        //}
+        //if (inputType.toLowerCase() == 'check') {
+        //    $(`#${inputId}`).prop('checked', inputValue == 1 ? true : false)
+        //}
+    }
+
     $("#btn-buscar").click(function () {
         if ($('#txtRutBeneficiario').val() == '') {
             handleMensaje.mensajeInfo('Debe ingresar Rut Beneficiario');
             return;
         }
+
+        var value = GetInputValue('txtRutBeneficiario');
+            if (IsNull(value) != null) {
+                var valid = ValidarRut(value);
+                if (!valid.resultado) {
+                    handleMensaje.mensajeInfo('EL RUT ingresado no es correcto');
+                    SetInputValue('text', 'txtRutBeneficiario', '');
+                    return;
+                }
+            }
+    
+
+
         CargarBeneficiario();
         $('#resultado-busqueda').show();
         $('#resultado-busqueda').addClass('animate__animated animate__fadeInUp');
@@ -114,9 +233,10 @@ $(document).ready(function () {
 
     //Funciones
     function CargarBeneficiario() {
+        var v_rut = $("#txtRutBeneficiario").val().split('-');
 
         var _Data = {
-            "RutBeneficiario": $("#txtRutBeneficiario").val() //"2410000" //
+            "RutBeneficiario": v_rut[0] //"2410000" //
         }
         var v_url = "/ConsultaBeneficiario/Get";
         console.log(v_url);

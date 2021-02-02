@@ -6,12 +6,115 @@
     { Nombre: "Nº PAM", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
 ];
 
+
+
 var ListaItemsBonos = [];
 
 var checkedBonos = false;
 
 
 $(function () {
+
+
+    $("#btnExportar").click(function () {
+
+        var vSel = false;
+
+        var a = document.createElement('a');
+        var data_type = 'data:application/vnd.ms-excel';
+
+        var tab_text = "<table>";
+        tab_text = tab_text + "<tr><td></td></tr>";
+        ListaItemsBonos.map(element => {
+            if (element.Seleccionado) {
+                tab_text = tab_text + "<tr><td>"+ element.NumeroBono + "</td></tr>";
+                console.log(tab_text);
+                vSel = true;
+            }
+     
+        });
+
+
+        if (vSel == false) {
+
+
+            AlertInfo('info', 'Información', 'Debe seleccionar al menos una fila');
+            return false;
+
+        }
+        tab_text = tab_text + "</table>";
+        tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+        tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
+        tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+
+
+
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf("MSIE ");
+
+        if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+        {
+            txtArea1.document.open("txt/html", "replace");
+            txtArea1.document.write(tab_text);
+            txtArea1.document.close();
+            txtArea1.focus();
+            sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
+        }
+        else                 //other browser not tested on IE 11
+            //sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text) );
+            //sa = window.open('data:application/vnd.ms-excel,filename=ExcelBonos.xls,' + encodeURIComponent(tab_text));
+            a.href = data_type + ', ' + tab_text;
+        a.download = 'BonosExcel.xls';
+        //triggering the function
+        a.click();
+        //just in case, prevent default behaviour
+        //e.preventDefault();
+        //return (sa);
+        
+    });
+
+
+
+    function fnExcelReport() {
+
+
+  
+
+
+
+        var tab_text = "<table>";
+        var textRange; var j = 0;
+        tab = document.getElementById('table-list-bonos'); // id of table
+
+        for (j = 0; j < tab.rows.length; j++) {
+            tab_text = tab_text + tab.rows[j].innerHTML + "</tr>";
+            //tab_text=tab_text+"</tr>";
+        }
+
+        tab_text = tab_text + "</table>";
+        tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+        tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
+        tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf("MSIE ");
+
+        if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+        {
+            txtArea1.document.open("txt/html", "replace");
+            txtArea1.document.write(tab_text);
+            txtArea1.document.close();
+            txtArea1.focus();
+            sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
+        }
+        else                 //other browser not tested on IE 11
+            sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
+
+        return (sa);
+       
+    }
+
 
     function handleGetFiltroCobro() {
         var value = localStorage.getItem('objFiltro');
@@ -91,6 +194,8 @@ $(function () {
             if (IsNull(ListaItemsBonos) != null) {
                 ListaItemsBonos.map(element => {
                     element.Seleccionado = true;
+
+
                 });
             }
 
@@ -249,6 +354,14 @@ $(function () {
     
 
     });
+
+    //EXCEL
+    $(document).on('click', '#btn-filtro', function (e) {
+
+
+
+    });
+
 });
 
 
