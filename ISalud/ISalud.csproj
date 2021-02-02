@@ -203,8 +203,10 @@
     <Content Include="js\select2-4.0.7\dist\js\select2.js" />
     <Content Include="js\select2-4.0.7\dist\js\select2.min.js" />
     <Content Include="js\select2-4.0.7\Gruntfile.js" />
+    <Content Include="js\Sitio\CalcularMontos.js" />
     <Content Include="js\Sitio\CobrarNuevaFactura.js" />
     <Content Include="js\Sitio\ConsultaBeneficiario.js" />
+    <Content Include="js\Sitio\ConsultaCobranza.js" />
     <Content Include="js\Sitio\ExitoCobroFactura.js" />
     <Content Include="js\Sitio\Global.js" />
     <Content Include="js\Sitio\Home.js" />
@@ -280,6 +282,8 @@
     <Content Include="Views\CobrarFactura\CobrarFacturaBono.cshtml" />
     <Content Include="Views\CobrarFactura\ExitoCobro.cshtml" />
     <Content Include="Views\CobrarFactura\ErrorCobro.cshtml" />
+    <Content Include="Views\CobrarFactura\CobrarFacturaArchivo.cshtml" />
+    <Content Include="Views\CobrarFactura\CobrarFacturaCuentaMedica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

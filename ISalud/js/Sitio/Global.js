@@ -5,6 +5,14 @@
         ConsultaBonosParaCobro: 'ConsultaBonosParaCobro',
         CobrarFacturaBonos: 'CobrarFacturaBonos'
     },
+    CalcularMontosController: {
+        Name: 'CalcularMontos',
+        ConsultaBonosParaCobro: 'ConsultaBonosParaCobro'
+    },
+   ConsultaCobranzaController: {
+        Name: 'ConsultaCobranza',
+       CargarGrilla: 'CargarGrilla'
+    },
     FormatoFecha: 'DD/MM/YYYY'
 }
 

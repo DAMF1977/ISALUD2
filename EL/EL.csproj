@@ -44,11 +44,13 @@
     <Compile Include="Entradas\DtoCobrarFacturaBonos.cs" />
     <Compile Include="Entradas\DtoCobroBono.cs" />
     <Compile Include="Entradas\DtoCobroFactura.cs" />
+    <Compile Include="Entradas\DtoConsultaCobranza.cs" />
     <Compile Include="Entradas\DtoSessionUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Salidas\Bono.cs" />
     <Compile Include="Salidas\CobroFactura.cs" />
     <Compile Include="Salidas\CobroFacturaBonos.cs" />
+    <Compile Include="Salidas\ConsultaCobranza.cs" />
     <Compile Include="Salidas\Respuesta.cs" />
   </ItemGroup>
   <ItemGroup />

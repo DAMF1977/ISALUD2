@@ -29,6 +29,9 @@ namespace ISalud.Controllers
             return View();
         }
 
+
+
+
         [ActionName("ExitoCobro")]
         public ActionResult Index4()
         {
@@ -41,6 +44,11 @@ namespace ISalud.Controllers
             return View();
         }
 
+        [ActionName("CobrarFacturaArchivo")]
+        public ActionResult Index6()
+        {
+            return View();
+        }
         [HttpPost]
         public JsonResult ConsultaFacturasPorCobrar(DtoCobroFactura data)
         {
