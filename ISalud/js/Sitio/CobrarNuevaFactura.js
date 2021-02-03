@@ -1,9 +1,9 @@
 ﻿var tableHeader = [
     { Nombre: "", MinWidth: "", MaxWidth: "", ClassName: "text-center" },
-    { Nombre: "Rut prestador", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
+    { Nombre: "Rut prestador", MinWidth: "100", MaxWidth: "100", ClassName: "text-left" },
     { Nombre: "Nombre prestador", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
     { Nombre: "Nº factura", MinWidth: "", MaxWidth: "", ClassName: "text-right" },
-    { Nombre: "Fecha emisión", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
+    { Nombre: "Fecha emisión", MinWidth: "80", MaxWidth: "80", ClassName: "text-left" },
     { Nombre: "Tipo de factura", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
     { Nombre: "Monto excento", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
     { Nombre: "Monto afecto", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
@@ -147,18 +147,6 @@ var handlePagesStates = function () {
 
     }
 
-
-    $("#file-3").change(function () {
-        $('#btn-continuar2').show();
-        $('.contenedorTablaResumen').hide();
-        $('#btn-continuar2').addClass('animate__animated animate__fadeIn');
-
-    });
-
-
-
-
-
     function handleButtonsEvents() {
 
         $("#btnBuscar").on("click", function (e) {
@@ -186,7 +174,7 @@ var handlePagesStates = function () {
                         window.location.href = '/CobrarFactura/CobrarFacturaArchivo';
                         break;
                     case 'cuenta':
-                        AlertInfo('info', 'Información', 'Opción no disponible');
+                        window.location.href = '/CobrarFactura/CobrarFacturaCuentaMedica';
                         break;
                 }
             }
@@ -263,8 +251,6 @@ var handlePagesStates = function () {
 
         });
 
-
-
         $(document).on('click', '#btn-continuar2', function (e) {
 
             var continuar = true;
@@ -333,13 +319,17 @@ var handleCobrarFactura = function () {
             .then(response => {
                 if (response.Resultado) {
                     ListaItems = response.Elemento;
+
+                    if (ListaItems.length == 0)
+                        $('#btn-cobrar-1').hide();
                 }
                 else {
-                    AlertInfo('info', 'Información', response.Mensaje);
+                    $('#btn-cobrar-1').hide();
                 }
                 handleDatatableFacturas.init();
             });
         
+
         /*
         ListaItems.push({
             RutPrestador: 65987456,
@@ -358,7 +348,7 @@ var handleCobrarFactura = function () {
             RutPrestador: 65987456,
             DV: '9',
             RazonSocial: 'Clínica Santa María',
-            FolioDT: 32323898,
+            FolioDT: 32323890,
             FechaEmision: '21/01/2021 20:30:45',
             TipoDT: 33,
             MontoExento: 98987456,
@@ -371,7 +361,7 @@ var handleCobrarFactura = function () {
             RutPrestador: 65987456,
             DV: '9',
             RazonSocial: 'Clínica Santa María',
-            FolioDT: 32323898,
+            FolioDT: 32323891,
             FechaEmision: '21/01/2021 20:30:45',
             TipoDT: 33,
             MontoExento: 98987456,
@@ -424,23 +414,19 @@ var handleCobrarFactura = function () {
             
 
             /*
-            ListaItemsBonos.push({ NumeroBono: 24400411, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
-            ListaItemsBonos.push({ NumeroBono: 24400412, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
-            ListaItemsBonos.push({ NumeroBono: 24400413, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
-            ListaItemsBonos.push({ NumeroBono: 24400414, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
-            ListaItemsBonos.push({ NumeroBono: 24400415, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
+            ListaItemsBonos.push({ NumeroBono: 24400411, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 10000000, Seleccionado: false });
+            ListaItemsBonos.push({ NumeroBono: 24400412, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 10000000, Seleccionado: false });
+            ListaItemsBonos.push({ NumeroBono: 24400413, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 10000000, Seleccionado: false });
+            ListaItemsBonos.push({ NumeroBono: 24400414, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 20000000, Seleccionado: false });
+            ListaItemsBonos.push({ NumeroBono: 24400415, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 20000000, Seleccionado: false });
 
-            ListaItemsBonos.push({ NumeroBono: 24400416, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
-            ListaItemsBonos.push({ NumeroBono: 24400417, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
-            ListaItemsBonos.push({ NumeroBono: 24400418, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
-            ListaItemsBonos.push({ NumeroBono: 24400419, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
-            ListaItemsBonos.push({ NumeroBono: 24400420, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
+            ListaItemsBonos.push({ NumeroBono: 24400416, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 20000000, Seleccionado: false });
+            ListaItemsBonos.push({ NumeroBono: 24400417, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 20000000, Seleccionado: false });
+            ListaItemsBonos.push({ NumeroBono: 24400418, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 30000000, Seleccionado: false });
+            ListaItemsBonos.push({ NumeroBono: 24400419, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 5000000, Seleccionado: false });
+            ListaItemsBonos.push({ NumeroBono: 24400420, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 5000000, Seleccionado: false });
 
-            ListaItemsBonos.push({ NumeroBono: 24400421, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
-            ListaItemsBonos.push({ NumeroBono: 24400422, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
-            ListaItemsBonos.push({ NumeroBono: 24400423, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
-            ListaItemsBonos.push({ NumeroBono: 24400424, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
-            ListaItemsBonos.push({ NumeroBono: 24400425, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 1264071, Seleccionado: false });
+            ListaItemsBonos.push({ NumeroBono: 24400421, FechaEmision: '2012-04-26T00:00:00', MontoACobrar: 10000000, Seleccionado: false });
 
             handleDatatableBonos.init();
             */
@@ -495,11 +481,26 @@ var handleCobrarFactura = function () {
             EjecutaConsulta.Post(Global.CobrarFacturaController.Name, Global.CobrarFacturaController.CobrarFacturaBonos, params, false)
                 .then(response => {
                     if (response.Resultado) {
+
+                        var objFiltro = handlePagesStates.handleGetFiltroCobro();
+                        if (objFiltro != null) {
+                            var objCobroFactura = {
+                                NroFactura: objFiltro.NroFactura,
+                                ValorFactura: objFiltro.ValorFactura,
+                                RutPrestador: objFiltro.RutPrestador,
+                                RutDV: objFiltro.RutDV,
+                                TipoDT: objFiltro.TipoDT,
+                                TipoCobro: objFiltro.TipoCobro,
+                                FiltroBono: objFiltro.FiltroBono,
+                                NroWorkflow: response.Elemento
+                            }
+                        }
+                        handlePagesStates.handleSetFiltroCobro(objCobroFactura);
+
                         window.location.href = '/CobrarFactura/ExitoCobro';
                     }
                     else {
-                        //window.location.href = '/CobrarFactura/ErrorCobro';
-                        window.location.href = '/CobrarFactura/ExitoCobro';
+                        window.location.href = '/CobrarFactura/ErrorCobro';
                     }
                 });
         }
@@ -691,35 +692,45 @@ var handleDatatableBonos = function () {
 
         $("#btnModalCobro").click(function () {
 
-            var cont = 0;
+            var total_bonos = 0;
             if (IsNull(ListaItemsBonos) != null) {
                 ListaItemsBonos.map(element => {
-                    if (element.Seleccionado)
-                        cont++;
+                    if (element.Seleccionado) {
+                        total_bonos = total_bonos + element.MontoACobrar;
+                    }
                 });
             }
 
-            if (cont == 0) {
+            if (total_bonos == 0) {
                 AlertInfo('warning', 'Advertencia', 'Seleccione al menos un bono');
             }
             else {
 
                 var objFiltro = handlePagesStates.handleGetFiltroCobro();
                 if (objFiltro != null) {
-                    $('#lblNroFacturaModal').text(objFiltro.NroFactura);
-                    if (objFiltro.TipoCobro == 'bono')
-                        $('#lblTipoCobroModal').text('Bono');
-                    else {
-                        if (objFiltro.TipoCobro == 'archivo')
-                            $('#lblTipoCobroModal').text('Archivo');
-                        else
-                            $('#lblTipoCobroModal').text('Cuenta médica');
-                    }
-                    $('#lblFechaCobroModal').text(moment().format(Global.FormatoFecha));
-                    $('#lblMontoCobroModal').text(handleFormato.formatNumber.new(objFiltro.ValorFactura));
 
-                    $(".overlay").fadeIn(200);
-                    event.preventDefault();
+                    var total_factura = Number(objFiltro.ValorFactura);
+
+                    if (total_factura != total_bonos)
+                        AlertInfo('warning', 'Advertencia', 'La suma de los bonos seleccionados debe ser igual al monto de la factura');
+                    else {
+
+                        $('#lblNroFacturaModal').text(objFiltro.NroFactura);
+                        if (objFiltro.TipoCobro == 'bono')
+                            $('#lblTipoCobroModal').text('Bono');
+                        else {
+                            if (objFiltro.TipoCobro == 'archivo')
+                                $('#lblTipoCobroModal').text('Archivo');
+                            else
+                                $('#lblTipoCobroModal').text('Cuenta médica');
+                        }
+                        $('#lblFechaCobroModal').text(moment().format(Global.FormatoFecha));
+                        $('#lblMontoCobroModal').text(handleFormato.formatNumber.new(objFiltro.ValorFactura));
+
+                        $(".overlay").fadeIn(200);
+                        event.preventDefault();
+
+                    }
                 }
 
             }

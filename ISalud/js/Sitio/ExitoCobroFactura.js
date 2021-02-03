@@ -9,7 +9,6 @@ var handlePagesStates = function () {
     function init() {
 
         var objFiltro = handleGetFiltroCobro();
-        console.log(objFiltro);
         if (objFiltro != null) {
             $('#lblNroFacturaExito').text(objFiltro.NroFactura);
             if (objFiltro.TipoCobro == 'bono')
@@ -22,8 +21,10 @@ var handlePagesStates = function () {
             }
             $('#lblFechaCobroExito').text(moment().format(Global.FormatoFecha));
             $('#lblMontoCobroExito').text(handleFormato.formatNumber.new(objFiltro.ValorFactura));
+            $('#lblNroWorkflow').text(objFiltro.NroWorkflow);
         }
 
+        localStorage.clear();
     }
 
     function handleGetFiltroCobro() {

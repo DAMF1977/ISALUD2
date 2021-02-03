@@ -11,3 +11,12 @@ D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\obj\Debug\BL.csproj.CoreCompileInputs
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\obj\Debug\BL.csproj.CopyComplete
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\obj\Debug\BL.dll
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\obj\Debug\BL.pdb
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\ClosedXML.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\DocumentFormat.OpenXml.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\ExcelNumberFormat.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\System.IO.FileSystem.Primitives.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\System.IO.Packaging.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\ClosedXML.pdb
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\ClosedXML.xml
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\DocumentFormat.OpenXml.xml
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\BL\bin\Debug\ExcelNumberFormat.xml

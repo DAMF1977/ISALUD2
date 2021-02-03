@@ -352,3 +352,10 @@ D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\obj\Debug\ISalud.csproj.CoreCompi
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\obj\Debug\ISalud.csproj.CopyComplete
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\obj\Debug\ISalud.dll
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\obj\Debug\ISalud.pdb
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\DocumentFormat.OpenXml.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ClosedXML.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ExcelNumberFormat.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\DocumentFormat.OpenXml.xml
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ClosedXML.pdb
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ClosedXML.xml
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ExcelNumberFormat.xml

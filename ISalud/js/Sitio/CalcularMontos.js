@@ -156,7 +156,7 @@ $(function () {
                 TipoFiltro: tipo_filtro,
                 Valor: valor_filtro
             }
-           
+            console.log(params);
             EjecutaConsulta.Post(Global.CobrarFacturaController.Name, Global.CobrarFacturaController.ConsultaBonosParaCobro, params, false)
                 .then(response => {
                     if (response.Resultado) {

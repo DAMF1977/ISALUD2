@@ -204,6 +204,7 @@
     <Content Include="js\select2-4.0.7\dist\js\select2.min.js" />
     <Content Include="js\select2-4.0.7\Gruntfile.js" />
     <Content Include="js\Sitio\CalcularMontos.js" />
+    <Content Include="js\Sitio\CobrarFacturaArchivo.js" />
     <Content Include="js\Sitio\CobrarNuevaFactura.js" />
     <Content Include="js\Sitio\ConsultaBeneficiario.js" />
     <Content Include="js\Sitio\ConsultaCobranza.js" />
@@ -288,6 +289,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

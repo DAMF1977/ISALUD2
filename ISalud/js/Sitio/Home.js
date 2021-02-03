@@ -1,4 +1,8 @@
-﻿$(document).ready(function () {
+﻿$(function () {
+    localStorage.clear();
+});
+
+$(document).ready(function () {
 
     //#region SECCION POR DEFECTO COMPONENTE DATATABLES
     var dataTableButtons = '<div class="dataTables_buttons hidden-sm-down actions">' +

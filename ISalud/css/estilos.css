@@ -710,9 +710,9 @@ input[type="checkbox"]:checked + span .fake-checkbox:after { display: block; }
     padding: 20px 50px;
     border-radius: 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 20px;
-    width: 550px;
+    width: 750px;
     margin: 30px auto 50px;
 }
 .paginaError .btn-primary{

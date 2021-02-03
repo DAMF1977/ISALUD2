@@ -23,3 +23,7 @@ ISalud/bin/ISalud.pdb
 ISalud/obj/Debug/ISalud.csprojAssemblyReference.cache
 ISalud/obj/Debug/ISalud.dll
 ISalud/obj/Debug/ISalud.pdb
+.vs/ISalud/v16/.suo
+*.dll
+*.pdb
+*.cache

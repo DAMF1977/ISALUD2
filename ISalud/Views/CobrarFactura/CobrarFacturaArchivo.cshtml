@@ -4,69 +4,57 @@
 }
 
 <style>
-    input[type=checkbox] {
-        /* Double-sized Checkboxes */
-        -ms-transform: scale(2); /* IE */
-        -moz-transform: scale(2); /* FF */
-        -webkit-transform: scale(2); /* Safari and Chrome */
-        -o-transform: scale(2); /* Opera */
-        padding: 10px;
+    p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        color: var(--colorTexto);
+        font-weight: 500;
+    }
+    .checkbox-head {
+        -ms-transform: scale(0.75) !important;
+        -moz-transform: scale(0.75) !important;
+        -webkit-transform: scale(0.75) !important;
+        -o-transform: scale(0.75) !important;
+        padding: 10px !important;
+    }
+
+    .checkbox-body {
+        -ms-transform: scale(2) !important;
+        -moz-transform: scale(2) !important;
+        -webkit-transform: scale(2) !important;
+        -o-transform: scale(2) !important;
+        padding: 10px !important;
     }
 </style>
 
-<main class="center text-center">
-    <div id="content-filtro" class="animate__animated animate__fadeInRight">
-        <h1>Cobrar factura con Archivo</h1>
-
+<main class="center-main text-center">
+    <div id="contenido-archivo">
+        <h1>Cobrar factura con archivo</h1>
         <p>Antes de mostrar los datos debe seleccionar una opción</p>
 
-        <!-- Filtros antes de mostrar información-->
         <!-- Ingreso de archivo antes de mostrar información-->
-
         <div class="buscador">
             <div>
                 <div class="inputFile">
-                    <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" multiple style="display: none;" />
+                    <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" multiple style="display: none;" />
                     <label for="file-3"><span>Click aquí para subir archivo</span></label>
                     <img src="/img/i-upload.svg" alt="icono subir archivo">
                 </div>
-
+                <p>Adjuntar archivo excel con columna nº de bono</p>
             </div>
-
         </div>
-        <p>Adjuntar archivo excel con columna nº de bono</p>
-        <br />
-        <a class="btn-primary" id="btn-continuar2" style="display: none;">Continuar</a>
+
+        <a class="btn-primary" id="btn-continuar" style="display: none;">Continuar</a>
     </div>
 
     <!-- Información filtrada -->
 
     <main class="center-main text-center" id="contenido-filtrado" style="display: none;">
         <h1>Cobrar factura con archivo</h1>
-        @*<div class="buscador filtrosFacturaBono">
-            <form action="#">
-                <div class="checkBox">
-                    <label class="radio-button">
-                        <input id="rbTodosBonos" type="radio" name="radio">
-                        <span class="label-visible">
-                            <span class="fake-radiobutton"></span>
-                        </span>
-                        Todos los bonos
-                    </label>
-                </div>
-                <div>
-                    <input id="txtRutBeneficiarioFiltro" type="text" placeholder="Rut beneficiario">
-                </div>
-                <div>
-                    <input id="txtNroCuentaFiltro" type="text" class="FormatNumber" placeholder="Nº de cuenta médica">
-                </div>
-                <button id="btn-filtro" type="button"><img src="~/img/i-buscar.svg"></button>
-            </form>
-        </div>*@
-        <!-- Contenedor tabla y resumen -->
+
         <div class="contenedorTablaResumen">
 
-            <table id="table-list-archivos" class="cobrarBonoTabla display">
+            <table id="table-list-bonos" class="cobrarBonoTabla display">
                 <thead id="table-list-head-bonos">
                 </thead>
                 <tbody id="table-list-body-bonos">
@@ -84,6 +72,7 @@
             </div>
 
         </div>
+
     </main>
 
     <!-- Popup Confirmación datos-->
@@ -117,4 +106,11 @@
 
 </main>
 
-<script src="~/js/Sitio/CobrarNuevaFactura.js"></script>
+<script src="~/js/inputfile/fileinput.js"></script>
+<script src="~/js/Sitio/CobrarFacturaArchivo.js"></script>
+
+<script>
+
+    (function (e, t, n) { var r = e.querySelectorAll("html")[0]; r.className = r.className.replace(/(^|\s)no-js(\s|$)/, "$1js$2") })(document, window, 0);
+
+</script>

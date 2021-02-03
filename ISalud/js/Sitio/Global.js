@@ -3,7 +3,8 @@
         Name: 'CobrarFactura',
         ConsultaFacturasPorCobrar: 'ConsultaFacturasPorCobrar',
         ConsultaBonosParaCobro: 'ConsultaBonosParaCobro',
-        CobrarFacturaBonos: 'CobrarFacturaBonos'
+        CobrarFacturaBonos: 'CobrarFacturaBonos',
+        SubirArchivo: 'SubirArchivo'
     },
     CalcularMontosController: {
         Name: 'CalcularMontos',
@@ -131,6 +132,52 @@ var EjecutaConsulta = function () {
                     }
                 });
 
+            });
+        },
+        UploadFile: function (input_file, controller, action, params, showMessage = true) {
+            ShowLoading();
+            return new Promise(resolve => {
+
+                var fileUpload = $("#" + input_file).get(0);
+                var files = fileUpload.files;
+                var fileData = new FormData();
+                for (var i = 0; i < files.length; i++) {
+                    fileData.append(files[i].name, files[i]);
+                }
+
+                for (var i = 0; i < params.length; i++) {
+                    fileData.append(params[i].nombre, params[i].valor);
+                }
+
+                $.ajax({
+                    url: `/${controller}/${action}`,
+                    type: "POST",
+                    data: fileData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (res) {
+                        if (res) {
+                            if (!res.EsError) {
+                                resolve(res);
+                            }
+                            else {
+                                AlertInfo('error', 'Error', res.Mensaje);
+                            }
+                        }
+                    },
+                    error: (xhr) => {
+                        let tipoAlerta = null;
+                        if (xhr.status == 404) tipoAlerta = 'warning';
+                        if (xhr.status == 500 || xhr.status == 400 || xhr.status == 401) tipoAlerta = 'error';
+                        if (showMessage || xhr.status == 400 || xhr.status == 500) {
+                            var json = xhr.responseJSON;
+                            AlertInfo(tipoAlerta ? tipoAlerta : 'error', 'Error', json.error_description);
+                        }
+                        CloseLoading();
+                        resolve(false);
+                    }
+                });
             });
         }
     }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Entradas\DtoCobrarFacturaBonos.cs" />
     <Compile Include="Entradas\DtoCobroBono.cs" />
+    <Compile Include="Entradas\DtoCobroBonoAdicional.cs" />
     <Compile Include="Entradas\DtoCobroFactura.cs" />
     <Compile Include="Entradas\DtoConsultaCobranza.cs" />
     <Compile Include="Entradas\DtoSessionUsuario.cs" />
