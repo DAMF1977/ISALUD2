@@ -36,8 +36,6 @@ $(function () {
 
 
         if (vSel == false) {
-
-
             AlertInfo('info', 'Información', 'Debe seleccionar al menos una fila');
             return false;
 
@@ -125,8 +123,8 @@ $(function () {
     }
 
     function ConsultaBonosParaCobro() {
-        var objFiltro = handleGetFiltroCobro();
-        if (objFiltro != null) {
+        //var objFiltro = handleGetFiltroCobro();
+       // if (objFiltro != null) {
           //  console.log('RUT:' + $('#txtRutBeneficiarioFiltro').val());
           //  console.log('CUENTA: ' + $('#txtNroCuentaFiltro').val());
 
@@ -152,7 +150,7 @@ $(function () {
 
 
             var params = {
-                RutPrestador: objFiltro.RutPrestador,
+                RutPrestador: "70905700",
                 TipoFiltro: tipo_filtro,
                 Valor: valor_filtro
             }
@@ -168,11 +166,12 @@ $(function () {
                     SetColumnsTable(tableHeaderBonos)
                         .then(res => {
                             $('#table-list-head-bonos').html(`<tr>${res}</tr>`);
+                            $("#lblTotalSumaBonos").text(`$${handleFormato.formatNumber.new(0)}`);
                             LlenarData();
                         });
                 });
 
-        }
+       // }
 
 
 
