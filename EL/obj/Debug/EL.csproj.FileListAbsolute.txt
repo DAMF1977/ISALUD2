@@ -1,6 +1,5 @@
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\EL\bin\Debug\EL.dll
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\EL\bin\Debug\EL.pdb
-D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\EL\obj\Debug\EL.csprojAssemblyReference.cache
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\EL\obj\Debug\EL.csproj.CoreCompileInputs.cache
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\EL\obj\Debug\EL.dll
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\EL\obj\Debug\EL.pdb

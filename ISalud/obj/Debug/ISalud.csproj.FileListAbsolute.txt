@@ -327,6 +327,9 @@ D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\System.Web.WebPages.Deploymen
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\System.Web.WebPages.dll
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\System.Web.WebPages.Razor.dll
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\WebGrease.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\DocumentFormat.OpenXml.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ClosedXML.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ExcelNumberFormat.dll
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\BL.pdb
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\EL.pdb
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\RestSharp.xml
@@ -340,6 +343,10 @@ D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\System.Web.WebPages.Razor.xml
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\Newtonsoft.Json.xml
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\Antlr3.Runtime.pdb
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\DocumentFormat.OpenXml.xml
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ClosedXML.pdb
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ClosedXML.xml
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ExcelNumberFormat.xml
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\es\System.Web.Helpers.resources.dll
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\es\System.Web.Mvc.resources.dll
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\es\System.Web.Optimization.resources.dll
@@ -352,10 +359,3 @@ D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\obj\Debug\ISalud.csproj.CoreCompi
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\obj\Debug\ISalud.csproj.CopyComplete
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\obj\Debug\ISalud.dll
 D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\obj\Debug\ISalud.pdb
-D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\DocumentFormat.OpenXml.dll
-D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ClosedXML.dll
-D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ExcelNumberFormat.dll
-D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\DocumentFormat.OpenXml.xml
-D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ClosedXML.pdb
-D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ClosedXML.xml
-D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\ISalud\bin\ExcelNumberFormat.xml
