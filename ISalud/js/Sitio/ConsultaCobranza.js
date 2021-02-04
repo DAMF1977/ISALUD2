@@ -8,7 +8,7 @@
     { Nombre: "Fecha pago", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
     { Nombre: "Monto pago", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
     { Nombre: "Forma pago", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
-    { Nombre: "", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
+   // { Nombre: "", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
 ];
 
 var ListaItems = [];
@@ -39,9 +39,9 @@ $(function () {
                 "NroFactura": IsNull(GetInputValue('txtNroFactura')) == null ? 0 : GetInputValue('txtNroFactura'),
                 "FechaInicio": (IsNull(GetInputValue('txtFechaIni')) == null) ? "" : GetInputValue('txtFechaIni'), 
                 "FechaTermino": (IsNull(GetInputValue('txtFechaTermino')) == null) ? "" : GetInputValue('txtFechaTermino'), 
-                "TipoCobro": $("#cmbTipoCobro").val(),
-                "NroCobranza": IsNull(GetInputValue('txtNroFactura')) == null ? 0 : GetInputValue('txtNroFactura'),
-                "EstadoDT": $("#cmbEstado").val()
+                "TipoCobro": (IsNull(GetInputValue('cmbTipoCobro')) == null) ? 0 : GetInputValue('cmbTipoCobro'), 
+                "NroCobranza": IsNull(GetInputValue('txtNroCobranza')) == null ? 0 : GetInputValue('txtNroCobranza'),
+                "EstadoDT": (IsNull(GetInputValue('cmbEstado')) == null) ? 0 : GetInputValue('cmbEstado')
                // FechaInicio: "01/04/2019",
                 //FechaTermino: "30/04/2020",
            
@@ -123,12 +123,12 @@ $(function () {
                          <td>${element.ComprobanteEgreso.FechaPago}</td>
                             <td>$${handleFormato.formatNumber.new(element.ComprobanteEgreso.MontoPago)}</td>
                          <td>${element.ComprobanteEgreso.Formapago}</td>
-                         <td><a href="#" class="btn-historial"><img src="/img/i-historial.svg"></a></td>
-                     </tr>`;
+                                            </tr>`;
 
             $('#table-list-body-principal').append(row);
         });
 
+        //  <td><a href="#" class="btn-historial"><img src="/img/i-historial.svg"></a></td>
 
 
         //$('.contenedorTablaResumen').show();
