@@ -12,7 +12,22 @@ var ListaItemsBonos = [];
 
 var checkedBonos = false;
 
+function s2ab(s) {
+    var buf = new ArrayBuffer(s.length);
+    var view = new Uint8Array(buf);
+    for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+    return buf;
+}
 
+function makeid(length) {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
 $(function () {
 
 
@@ -23,12 +38,13 @@ $(function () {
         var a = document.createElement('a');
         var data_type = 'data:application/vnd.ms-excel';
 
-        var tab_text = "<table>";
+        var nombre = makeid(5);
+        var tab_text = "<table id='" + nombre + "' style='display: none'>";
         tab_text = tab_text + "<tr><td></td></tr>";
         ListaItemsBonos.map(element => {
             if (element.Seleccionado) {
                 tab_text = tab_text + "<tr><td>"+ element.NumeroBono + "</td></tr>";
-                console.log(tab_text);
+            
                 vSel = true;
             }
      
@@ -44,11 +60,27 @@ $(function () {
         tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
         tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
         tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+        var menu = document.createElement('div');
+        console.log(tab_text);
+        menu.id = nombre;
+        menu.innerHTML = tab_text;
+        document.body.appendChild(menu);
+        
+
+        //document.body.innerHTML += tab_text;
 
 
 
 
-        var ua = window.navigator.userAgent;
+        var wb = XLSX.utils.table_to_book(document.getElementById(nombre), {sheet:"Sheet JS"});
+        var wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary'});
+
+        saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'BonosExcel.xlsx');
+        
+        
+    });
+
+      /*  var ua = window.navigator.userAgent;
         var msie = ua.indexOf("MSIE ");
 
         if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
@@ -69,10 +101,10 @@ $(function () {
         //just in case, prevent default behaviour
         //e.preventDefault();
         //return (sa);
-        
+   
     });
 
-
+     */
 
     function fnExcelReport() {
 
