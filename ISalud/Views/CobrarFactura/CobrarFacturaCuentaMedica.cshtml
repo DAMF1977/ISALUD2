@@ -8,10 +8,10 @@
         <h1>Cobrar factura con cuenta médica</h1>
         <div class="informacion">
             <div>
-                <span>Nº de factura: <b>55</b></span>
+                <span>Nº de factura: <b><label id="lblNroFactura">55</label></b></span>
             </div>
             <div>
-                <span>Monto factura: <b>$55.392.495</b></span>
+                <span>Monto factura: <b><label id="lblValorFactura">$55.392.495</label></b></span>
             </div>
         </div>
         <div class="titulo">
@@ -19,21 +19,21 @@
         </div>
         <form class="formCuentaMedica">
             <div>
-                <input type="text" placeholder="Nº de cuenta médica">
+                <input id="txtNroCuentaMedica" type="text" placeholder="Nº de cuenta médica" class="FormatNumber">
             </div>
             <div>
-                <input type="text" placeholder="Rut del paciente">
+                <input id="txtRutPaciente" type="text" placeholder="Rut del paciente" class="format-rut">
             </div>
             <div>
-                <input type="text" placeholder="Valor total de la cuenta">
+                <input id="txtValorCuenta" type="text" placeholder="Valor total de la cuenta" class="FormatAmount" data-precision="10,0">
             </div>
             <div class="calendarInput">
-                <input type="text" placeholder="Fecha incio hospitalización" class="datepicker">
-                <img src="/img/i-calendar.svg">
+                <input id="txtFechaInicio" type="text" placeholder="Fecha incio hospitalización" class="input-locked">
+                <img src="~/img/i-calendar.svg">
             </div>
             <div class="calendarInput">
-                <input type="text" placeholder="Fecha fin hospitalización" class="datepicker">
-                <img src="/img/i-calendar.svg">
+                <input id="txtFechaTermino" type="text" placeholder="Fecha fin hospitalización" class="input-locked">
+                <img src="~/img/i-calendar.svg">
             </div>
             
         </form>
@@ -53,24 +53,31 @@
             </div>
             <div class="inputFile" id="subir-archivo" style="display: none;">
                 <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" multiple="" style="display: none;">
-                <label for="file-3"><span>Click aquí para subir archivo</span></label>
+                <label for="file-3"><span id="lblInputFile">Click aquí para subir archivo</span></label>
                 <img src="~/img/i-upload.svg" alt="icono subir archivo">
             </div>
         </div>
 
         <div class="documentosAdjuntos" style="display: none;">
-            <table id="tablaDocumentos" class="display">
-                <thead>
-                    <tr>
-                        <th style="text-align:center">Nombre Documento</th>
-                        <th style="text-align:center">Tipo de Documento</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="archivos-subidos">
-                </tbody>
+            @*<table id="tablaDocumentos" class="display">
+            <thead>
+                <tr>
+                    <th style="text-align:center">Nombre Documento</th>
+                    <th style="text-align:center">Tipo de Documento</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="archivos-subidos">
+            </tbody>
+        </table>*@
 
+            <table id="table-list-files" class="display">
+                <thead id="table-list-head-files">
+                </thead>
+                <tbody id="table-list-body-files">
+                </tbody>
             </table>
+
         </div>
 
         <a class="btn-primary" id="btn-continuar" style="display: none;">Continuar</a>
@@ -284,8 +291,8 @@
 </main>
 
 <script src="~/js/inputfile/fileinput.js"></script>
-
 <script src="~/js/select2-4.0.7/dist/js/select2.min.js"></script>
+<script src="~/js/Sitio/CobrarFacturaCtaMedica.js"></script>
 
 <script>
     //Select2
@@ -312,51 +319,51 @@
     //inputFile
     (function (e, t, n) { var r = e.querySelectorAll("html")[0]; r.className = r.className.replace(/(^|\s)no-js(\s|$)/, "$1js$2") })(document, window, 0);
 
-    $(document).on('change', '#select-documentacion', function (e) {
-        e.preventDefault();
-        $('#subir-archivo').fadeIn();
-    });
+    //$(document).on('change', '#select-documentacion', function (e) {
+    //    e.preventDefault();
+    //    $('#subir-archivo').fadeIn();
+    //});
 
-    $(document).on('change', '#file-3', function () {
+    //$(document).on('change', '#file-3', function () {
 
-        var files = $('#file-3').prop('files');
-        if (files && files[0]) {
+    //    var files = $('#file-3').prop('files');
+    //    if (files && files[0]) {
 
-            var name = files[0].name;
-            if (name.length > 30) {
-                name = name.substr(0, 30) + '...';
-            }
+    //        var name = files[0].name;
+    //        if (name.length > 30) {
+    //            name = name.substr(0, 30) + '...';
+    //        }
 
-            var FR = new FileReader();
-            FR.addEventListener("load", function (e) {
-                //console.log(e.target.result);
+    //        var FR = new FileReader();
+    //        FR.addEventListener("load", function (e) {
+    //            //console.log(e.target.result);
 
-                $('.documentosAdjuntos').show();
-                // let html = '<tr>'
-                //     html +=  '<td>'+name+'</td>'
-                //     html += '<td>documento 1</td>'
-                //     html +=  '<td><a href="#"><img src="/img/i-eliminar.svg"></a></td>'
-                //     html += '</tr>'
-                // $('#archivos-subidos').append(html);
-                $('#btn-continuar').show();
-                $('#btn-continuar').addClass('animate__animated animate__fadeIn');
+    //            $('.documentosAdjuntos').show();
+    //            // let html = '<tr>'
+    //            //     html +=  '<td>'+name+'</td>'
+    //            //     html += '<td>documento 1</td>'
+    //            //     html +=  '<td><a href="#"><img src="/img/i-eliminar.svg"></a></td>'
+    //            //     html += '</tr>'
+    //            // $('#archivos-subidos').append(html);
+    //            $('#btn-continuar').show();
+    //            $('#btn-continuar').addClass('animate__animated animate__fadeIn');
 
 
-            });
-            FR.readAsDataURL(this.files[0]);
-        }
+    //        });
+    //        FR.readAsDataURL(this.files[0]);
+    //    }
 
-    });
+    //});
 
-    $(document).on('click', '#btn-continuar', function () {
-        $('#content-cuenta-medica').addClass('animate__animated animate__fadeOutLeft');
-        setTimeout(() => {
-            $('#content-cuenta-medica').hide();
-            $('#contenido-filtrado').show();
-            $('#contenido-filtrado').addClass('animate__animated animate__fadeInRight');
-        }, 500);
+    //$(document).on('click', '#btn-continuar', function () {
+    //    $('#content-cuenta-medica').addClass('animate__animated animate__fadeOutLeft');
+    //    setTimeout(() => {
+    //        $('#content-cuenta-medica').hide();
+    //        $('#contenido-filtrado').show();
+    //        $('#contenido-filtrado').addClass('animate__animated animate__fadeInRight');
+    //    }, 500);
 
-    });
+    //});
 
 
 

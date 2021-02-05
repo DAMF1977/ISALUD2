@@ -228,7 +228,7 @@ namespace BL.Modelos
                     {
                         var ListadoBonos = new List<string>();
 
-                        IEnumerable<IXLRow> DataRows = WoorkSheet.RowsUsed().Skip(1);
+                        IEnumerable<IXLRow> DataRows = WoorkSheet.RowsUsed();
                         foreach (IXLRow row in DataRows)
                         {
                             ListadoBonos.Add(row.Cell(1).Value.ToString());

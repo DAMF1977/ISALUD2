@@ -189,7 +189,7 @@ var handlePagesStates = function () {
                     AlertInfo('warning', 'Advertencia', 'EL RUT ingresado no es correcto');
                     SetInputValue('text', 'rut-beneficiario', '');
                 }
-            }            
+            }
         });
 
         $(document).on('click', '#btn-continuar', function (e) {

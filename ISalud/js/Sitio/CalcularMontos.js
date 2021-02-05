@@ -292,6 +292,7 @@ $(function () {
     }
 
     function InitDateTableBonos(tableId, disableColumsOrder = [], pagining = true, enableSearch = true, columns_align_right = [], columns_align_left = [], columns_align_center = [], number_format = [], nuevoRegistro = false) {
+
         $('#' + tableId).DataTable({
             ordering: false,
             searching: false,
@@ -312,7 +313,11 @@ $(function () {
                     $('#chkTodos').attr('checked', true);
                 else
                     $('#chkTodos').attr('checked', false);
-            }
+            },
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
         });
 
     }
