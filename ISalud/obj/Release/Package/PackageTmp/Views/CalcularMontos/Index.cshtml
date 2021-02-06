@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "CalcularMontos";
+    Layout = "~/Views/Shared/_LayoutSitio.cshtml";
+}
+
+<style>
+    input[type=checkbox] {
+        /* Double-sized Checkboxes */
+        -ms-transform: scale(2); /* IE */
+        -moz-transform: scale(2); /* FF */
+        -webkit-transform: scale(2); /* Safari and Chrome */
+        -o-transform: scale(2); /* Opera */
+        padding: 10px;
+    }
+</style>
+
+<main class="center consulta-beneficiario">
+    <h1>Calcular monto a facturar</h1>
+    <div class="buscador filtros-consulta">
+        <form>
+            <div><input type="text" id="txtRutBeneficiarioFiltro" class="inputText" placeholder="Rut beneficiario"></div>
+            <div><input type="text" id="txtNroCuentaFiltro" class="inputText FormatNumber" placeholder="Nº Cuenta médica"></div>
+            <button id="btn-filtro" type="button"><img src="~/img/i-buscar.svg"></button>
+        </form>
+    </div>
+
+    <table id="table-list-bonos" class="cobrarBonoTabla display">
+        <thead id="table-list-head-bonos">
+        </thead>
+        <tbody id="table-list-body-bonos">
+        </tbody>
+    </table>
+    <br />
+    <div class="calculo">
+        <div><span>Sumatoria bonos <br> seleccionados:</span> <b style="top: 20px"><label id="lblTotalSumaBonos">0</label></b></div>
+    </div>
+    <a href="#" class="btn-primary" id="btnExportar">Generar archivo excel</a>
+
+
+</main>
+
+
+
+
+@*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+<script type="text/javascript" src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>*@
+
+<script type="text/javascript" src="~/js/FileSaver.min.js"></script>
+<script type="text/javascript" src="~/js/xlsx.full.min.js"></script>
+<script src="~/js/Sitio/CalcularMontos.js"></script>
+

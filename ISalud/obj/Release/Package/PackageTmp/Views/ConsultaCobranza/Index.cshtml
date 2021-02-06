@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSitio.cshtml";
+}
+
+ 
+
+<main class="center consulta-beneficiario">
+    <h1>Consultar estado de cobranza</h1>
+    <div class="buscador filtros-estado-cobranza">
+        <form>
+            <div>
+                <select id="cmbTipoCobro" style="width: 100%;">
+                    <option value="">Tipo de cobro</option>
+                    <option value="1">Bonos</option>
+                    <option value="2">Archivo</option>
+                    <option value="3">Cuenta</option>
+                </select>
+            </div>
+            <div>
+                <select id="cmbEstado" style="width: 100%;">
+                    <option value="">Estado</option>
+                    <option value="1">Pendiente De Cobro</option>
+                    <option value="2">Recepcionado</option>
+                    <option value="3">Revisión Contraloría Med</option>
+                    <option value="4">Espera NC/ND</option>
+                    <option value="5">Rechazado</option>
+                    <option value="6">En Contabilidad</option>
+                    <option value="7">Pagado</option>
+         
+                </select>
+
+            </div>
+            <div><input type="text" id="txtNroCobranza" class="inputText FormatNumber" placeholder="Nº de cobranza"></div>
+            <div class="dateInput">
+                <input id="txtFechaIni" type="text" placeholder="Fecha inicio" class="input-locked">
+                <img src="/img/i-calendar.svg">
+            </div>
+            <div class="dateInput">
+                <input id="txtFechaTermino" type="text" placeholder="Fecha fin" class="input-locked">
+                <img src="/img/i-calendar.svg">
+            </div>
+            <div><input type="text" id="txtNroFactura" class="inputText FormatNumber" placeholder="Nº factura"></div>
+            <button id="btn-filtro" type="button"><img src="~/img/i-buscar.svg"></button>
+        </form>
+    </div>
+
+    <table id="table-list-principal" class="principalTabla display">
+        <thead id="table-list-head-principal">
+        </thead>
+        <tbody id="table-list-body-principal">
+        </tbody>
+    </table>
+</main>
+
+<script src="~/js/Sitio/ConsultaCobranza.js"></script>

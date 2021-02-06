@@ -248,5 +248,132 @@ namespace BL.Modelos
 
             return NumerosBonos;
         }
+
+        public Respuesta CobrarFacturaBonosCuentaMedica(DtoCobroFacturaCtaMedica param)
+        {
+            Respuesta Respuesta = new Respuesta();
+
+            var urlService = ConfigurationManager.ConnectionStrings["webAPI2"].ConnectionString;
+            RestClient Client = new RestClient(urlService);
+
+            string Json_Obj = JsonConvert.SerializeObject(param);
+            RestRequest Request = new RestRequest("GrabarDTCuentaMedica", Method.POST, DataFormat.Json);
+            Request.AddParameter("application/json", Json_Obj, ParameterType.RequestBody);
+
+            var Response = Client.Post(Request);
+
+            if (Response.StatusCode == HttpStatusCode.OK)
+            {
+                var data = JsonConvert.DeserializeObject<CobroFacturaBonos>(Response.Content);
+                if (data.Codigo == 0)
+                {
+                    Respuesta.Elemento = data.NumeroPectra;
+                }
+                else
+                {
+                    Respuesta.Resultado = false;
+                    Respuesta.Mensaje = data.Mensaje;
+                }
+            }
+            else
+            {
+                Respuesta.EsError = true;
+                Respuesta.Resultado = false;
+                Respuesta.Mensaje = String.Format("Ha ocurrido un error en la solicitud: {0}", Response.ErrorMessage);
+            }
+
+            return Respuesta;
+        }
+
+        public Respuesta GeneraEnvioDocumentosCuentaMedica(List<DtoCuentaMedicaDocumento> lista)
+        {
+            Respuesta Respuesta = new Respuesta();
+            var listaResults = new List<Dictionary<string, object>>();
+            foreach (var item in lista)
+            {
+                Respuesta result = EnviarDocumentoCuentaMedica(item);
+                listaResults.Add(new Dictionary<string, object>() {
+                    { "ESTADO", (result.Resultado) ? "OK" : "ERROR" },
+                    { "DESCRIPCION", (result.Resultado) ? "" : result.Mensaje }
+                });
+            }
+
+            return Respuesta;
+        }
+
+        private Respuesta EnviarDocumentoCuentaMedica(DtoCuentaMedicaDocumento param)
+        {
+            Respuesta Respuesta = new Respuesta();
+
+            var urlService = ConfigurationManager.ConnectionStrings["webAPI2"].ConnectionString;
+            RestClient Client = new RestClient(urlService);
+
+            string parametros = string.Format("RutPrestador={0}&TipoDocumento={1}&FolioDT={2}&TipoDT={3}&UltimoDocumento={4}",
+                                param.RutPrestador, param.TipoDocumento, param.FolioDT, param.TipoDT, param.UltimoDocumento);
+
+            string Callback = string.Format("GrabarDTCuentaMedicaDocumento?{0}", parametros);
+            RestRequest Request = new RestRequest(Callback, Method.POST, DataFormat.Json);
+            Request.AddParameter("application/pdf", param.Archivo, ParameterType.RequestBody);
+
+            var Response = Client.Post(Request);
+
+            if (Response.StatusCode == HttpStatusCode.OK)
+            {
+                var data = JsonConvert.DeserializeObject<CargaDocumento>(Response.Content);
+                if (data.Codigo == 0)
+                {
+                    Respuesta.Mensaje = data.Mensaje;
+                }
+                else
+                {
+                    Respuesta.Resultado = false;
+                    Respuesta.Mensaje = data.Mensaje;
+                }
+            }
+            else
+            {
+                Respuesta.EsError = true;
+                Respuesta.Resultado = false;
+                Respuesta.Mensaje = String.Format("Ha ocurrido un error en la solicitud: {0}", Response.ErrorMessage);
+            }
+
+            return Respuesta;
+        }
+
+        public Respuesta ObtieneFacturaPDF(DtoFacturaPDF param)
+        {
+            Respuesta Respuesta = new Respuesta();
+
+            var urlService = ConfigurationManager.ConnectionStrings["webAPI2"].ConnectionString;
+            RestClient Client = new RestClient(urlService);
+
+            string Json_Obj = JsonConvert.SerializeObject(param);
+            RestRequest Request = new RestRequest("ObtenerPDF", Method.POST, DataFormat.Json);
+            Request.AddParameter("application/json", Json_Obj, ParameterType.RequestBody);
+
+            var Response = Client.Post(Request);
+
+            if (Response.StatusCode == HttpStatusCode.OK)
+            {
+                var data = JsonConvert.DeserializeObject<FacturaPDF>(Response.Content);
+                if (data.Codigo == 0)
+                {
+                    Respuesta.Elemento = data.ArchvioBase64;
+                }
+                else
+                {
+                    Respuesta.Resultado = false;
+                    Respuesta.Mensaje = data.Mensaje;
+                }
+            }
+            else
+            {
+                Respuesta.EsError = true;
+                Respuesta.Resultado = false;
+                Respuesta.Mensaje = String.Format("Ha ocurrido un error en la solicitud: {0}", Response.ErrorMessage);
+            }
+
+            return Respuesta;
+        }
     }
 }

@@ -166,5 +166,62 @@ namespace ISalud.Controllers
 
             return new JsonResult { JsonRequestBehavior = JsonRequestBehavior.AllowGet, Data = respuesta };
         }
+
+        [HttpPost]
+        public JsonResult CobrarFacturaBonosCuentaMedica(DtoCobroFacturaCtaMedica data)
+        {
+            Respuesta Respuesta = new Respuesta();
+            try
+            {
+                MCobroFactura Model = new MCobroFactura();
+                Respuesta = Model.CobrarFacturaBonosCuentaMedica(data);
+                Response.StatusCode = (int)HttpStatusCode.OK;
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                Response.StatusDescription = ex.Message.Replace("\r", "").Replace("\n", "").Replace("\t", "").Replace("\v", "").Replace("\f", "").ToString();
+            }
+
+            return new JsonResult { JsonRequestBehavior = JsonRequestBehavior.AllowGet, Data = Respuesta };
+        }
+
+        [HttpPost]
+        public JsonResult EnviarDocumentoCuentaMedica(List<DtoCuentaMedicaDocumento> data)
+        {
+            Respuesta Respuesta = new Respuesta();
+            try
+            {
+                MCobroFactura Model = new MCobroFactura();
+                Respuesta = Model.GeneraEnvioDocumentosCuentaMedica(data);
+                Response.StatusCode = (int)HttpStatusCode.OK;
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                Response.StatusDescription = ex.Message.Replace("\r", "").Replace("\n", "").Replace("\t", "").Replace("\v", "").Replace("\f", "").ToString();
+            }
+
+            return new JsonResult { JsonRequestBehavior = JsonRequestBehavior.AllowGet, Data = Respuesta };
+        }
+
+        [HttpPost]
+        public JsonResult ObtieneFacturaPDF(DtoFacturaPDF data)
+        {
+            Respuesta Respuesta = new Respuesta();
+            try
+            {
+                MCobroFactura Model = new MCobroFactura();
+                Respuesta = Model.ObtieneFacturaPDF(data);
+                Response.StatusCode = (int)HttpStatusCode.OK;
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                Response.StatusDescription = ex.Message.Replace("\r", "").Replace("\n", "").Replace("\t", "").Replace("\v", "").Replace("\f", "").ToString();
+            }
+
+            return new JsonResult { JsonRequestBehavior = JsonRequestBehavior.AllowGet, Data = Respuesta };
+        }
     }
 }

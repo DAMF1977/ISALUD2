@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "CobrarFacturaArchivo";
+    Layout = "~/Views/Shared/_LayoutSitio.cshtml";
+}
+
+<style>
+    p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        color: var(--colorTexto);
+        font-weight: 500;
+    }
+    .checkbox-head {
+        -ms-transform: scale(0.75) !important;
+        -moz-transform: scale(0.75) !important;
+        -webkit-transform: scale(0.75) !important;
+        -o-transform: scale(0.75) !important;
+        padding: 10px !important;
+    }
+
+    .checkbox-body {
+        -ms-transform: scale(2) !important;
+        -moz-transform: scale(2) !important;
+        -webkit-transform: scale(2) !important;
+        -o-transform: scale(2) !important;
+        padding: 10px !important;
+    }
+</style>
+
+<main class="center-main text-center">
+    <div id="contenido-archivo">
+        <h1>Cobrar factura con archivo</h1>
+        <p>Antes de mostrar los datos debe seleccionar una opción</p>
+
+        <!-- Ingreso de archivo antes de mostrar información-->
+        <div class="buscador">
+            <div>
+                <div class="inputFile">
+                    <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" multiple style="display: none;" />
+                    <label for="file-3"><span>Click aquí para subir archivo</span></label>
+                    <img src="/img/i-upload.svg" alt="icono subir archivo">
+                </div>
+                <p>Adjuntar archivo excel con columna nº de bono</p>
+            </div>
+        </div>
+
+        <a class="btn-primary" id="btn-continuar" style="display: none;">Continuar</a>
+    </div>
+
+    <!-- Información filtrada -->
+
+    <main class="center-main text-center" id="contenido-filtrado" style="display: none;">
+        <h1>Cobrar factura con archivo</h1>
+
+        <div class="contenedorTablaResumen">
+
+            <table id="table-list-bonos" class="cobrarBonoTabla display">
+                <thead id="table-list-head-bonos">
+                </thead>
+                <tbody id="table-list-body-bonos">
+                </tbody>
+            </table>
+
+            <div class="resumen">
+                <div class="info">
+                    <h3>Resumen</h3>
+                    <div><span>Nº de factura:</span> <b><label id="lblNroFactura"></label></b></div>
+                    <div><span>Valor factura:</span> <b><label id="lblValorFactura"></label></b></div>
+                    <div><span>Sumatoria bonos <br> seleccionados:</span> <b style="top: 20px"><label id="lblTotalSumaBonos">0</label></b></div>
+                </div>
+                <button id="btnModalCobro" class="btn-primary">Cobrar bonos seleccionados</button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Popup Confirmación datos-->
+    <div class="overlay" style="display: none;">
+        <div class="contenedor-popup">
+            <h3>Confirmación</h3>
+
+            <div class="datosFactura">
+                <div>
+                    <span>Nº de factura</span>
+                    <b><label id="lblNroFacturaModal">55</label></b>
+                </div>
+                <div>
+                    <span>Se cobra con</span>
+                    <b><label id="lblTipoCobroModal">Bono</label></b>
+                </div>
+                <div>
+                    <span>Fecha</span>
+                    <b><label id="lblFechaCobroModal">21-01-2020</label></b>
+                </div>
+                <div>
+                    <span>Monto</span>
+                    <b><label id="lblMontoCobroModal">$4.529.434</label></b>
+                </div>
+            </div>
+
+            <button id="btnCobrarFacturaModal" class="btn-primary">Cobrar factura</button>
+            <a id="btnCancelarModal" href="javascript:void(0);" class="cancelarEnlace">Cancelar</a>
+        </div>
+    </div>
+
+</main>
+
+<script src="~/js/inputfile/fileinput.js"></script>
+<script src="~/js/Sitio/CobrarFacturaArchivo.js"></script>
+
+<script>
+
+    (function (e, t, n) { var r = e.querySelectorAll("html")[0]; r.className = r.className.replace(/(^|\s)no-js(\s|$)/, "$1js$2") })(document, window, 0);
+
+</script>

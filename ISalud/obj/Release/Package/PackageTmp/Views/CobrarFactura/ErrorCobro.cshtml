@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "ErrorCobro";
+    Layout = "~/Views/Shared/_LayoutSitio.cshtml";
+}
+
+<main class="center text-center paginaExito paginaError">
+    <img src="~/img/i-error.svg" alt="Icono error">
+    <h3>Ha ocurrido un problema</h3>
+    <p>No ha sido posible ingresar la factura al workflow.</p>
+    <a href="~/" class="btn-primary">Volver al inicio</a>
+</main>
+
+<script>
+    $(function () {
+        localStorage.clear();
+    });
+</script>

@@ -1,0 +1,6 @@
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\EL\bin\Release\EL.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\EL\bin\Release\EL.pdb
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\EL\obj\Release\EL.csprojAssemblyReference.cache
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\EL\obj\Release\EL.csproj.CoreCompileInputs.cache
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\EL\obj\Release\EL.dll
+D:\7.- PROYECTOS EXTERNOS\GITHUB\ISalud\EL\obj\Release\EL.pdb

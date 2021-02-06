@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "ExitoCobro";
+    Layout = "~/Views/Shared/_LayoutSitio.cshtml";
+}
+
+<main class="center text-center paginaExito">
+    <img src="~/img/i-exito.svg" alt="Icono éxito">
+    <h3>Factura ingresada con éxito</h3>
+    <p>La factura se ingresó correctamente al workflow.</p>
+    <div class="info">
+        <div>
+            <span>Nº de factura</span>
+            <b><label id="lblNroFacturaExito">55</label></b>
+        </div>
+        <div>
+            <span>Se cobra con</span>
+            <b><label id="lblTipoCobroExito">--</label></b>
+        </div>
+        <div>
+            <span>Fecha</span>
+            <b><label id="lblFechaCobroExito">21-01-2020</label></b>
+        </div>
+        <div>
+            <span>Monto</span>
+            <b><label id="lblMontoCobroExito">$55.000.000</label></b>
+        </div>
+        <div>
+            <span>N° Workflow</span>
+            <b><label id="lblNroWorkflow">234202343</label></b>
+        </div>
+    </div>
+    <a href="~/" class="btn-primary">Volver al inicio</a>
+</main>
+
+<script src="~/js/Sitio/ExitoCobroFactura.js"></script>

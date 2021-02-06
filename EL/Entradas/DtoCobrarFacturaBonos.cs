@@ -10,10 +10,12 @@ namespace EL.Entradas
     public class DtoBono 
     {
         public long? RutPrestador { get; set; }
+        public string Nombre { get; set; }
         public string DV { get; set; }
         public long? FolioDT { get; set; }
         public int? TipoDT { get; set; }
         public int? TipoCobro { get; set; }
+        public long? Valor { get; set; }
         public List<DtoBonoDetalle> Bonos { get; set; }
     }
 

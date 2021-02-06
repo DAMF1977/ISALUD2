@@ -135,10 +135,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-normal.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapValidator.css" />
     <Content Include="css\animate.css" />
     <Content Include="css\estilos.css" />
     <Content Include="css\loading-modal.css" />
@@ -179,6 +181,7 @@
     <Content Include="js\bootstrap-datepicker\datepicker_init.js" />
     <Content Include="js\bootstrap-datepicker\locales\bootstrap-datepicker.css" />
     <Content Include="js\bootstrap-datepicker\locales\bootstrap-datepicker.es.js" />
+    <Content Include="js\bootstrapValidator.js" />
     <Content Include="js\datatable\datatables.min.css" />
     <Content Include="js\datatable\datatables.min.js" />
     <Content Include="js\datatable\init.js" />

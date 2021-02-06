@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSitio.cshtml";
+}
+
+<main class="center consulta-beneficiario">
+    <h1>Cobrar nueva factura</h1>
+    <div class="buscador filtros-cobrarfactura">
+        <form>
+            <div><input id="txtNroFactura" type="text" class="FormatNumber" placeholder="Nº de factura"></div>
+            <div class="dateInput">
+                <input id="txtFechaInicio" type="text" placeholder="Fecha inicio" class="input-locked">
+                <img src="~/img/i-calendar.svg">
+            </div>
+            <div class="dateInput">
+                <input id="txtFechaTermino" type="text" placeholder="Fecha fin" class="input-locked">
+                <img src="~/img/i-calendar.svg">
+            </div>
+            <button id="btnBuscar" type="button"><img src="/img/i-buscar.svg"></button>
+        </form>
+    </div>
+
+    <table id="table-list" class="cobrarFactura display">
+        <thead id="table-list-head">
+            <tr><th></th></tr>
+        </thead>
+        <tbody id="table-list-body">
+        </tbody>
+    </table>
+
+    <button id="btn-cobrar-1" class="btn-primary" style="margin-top: 30px; display: none;">Cobrar factura</button>
+
+</main>
+
+<script src="~/js/Sitio/CobrarNuevaFactura.js"></script>
