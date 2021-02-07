@@ -25,8 +25,10 @@ $(function () {
     }
 
     function ConsultaGrilla() {
-        var objFiltro = handleGetFiltroCobro();
-        if (objFiltro != null) {
+
+        console.log()
+     //   var objFiltro = handleGetFiltroCobro();
+     
      
             var fecha_inicio = (IsNull(GetInputValue('txtFechaIni')) == null) ? "" : GetInputValue('txtFechaIni'),
                 fecha_termino = IsNull(GetInputValue('txtFechaTermino')) == null ? "" : GetInputValue('txtFechaTermino'),
@@ -74,7 +76,7 @@ $(function () {
                         });
                 });
 
-        }
+        
 
 
 
