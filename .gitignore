@@ -27,3 +27,17 @@ ISalud/obj/Debug/ISalud.pdb
 *.dll
 *.pdb
 *.cache
+ISalud/obj/Debug/ISalud.pdb
+ISalud/obj/Debug/ISalud.dll
+ISalud/obj/Debug/ISalud.csprojAssemblyReference.cache
+ISalud/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+ISalud/bin/ISalud.pdb
+ISalud/bin/ISalud.dll
+ISalud/bin/BL.pdb
+ISalud/bin/BL.dll
+BL/obj/Debug/BL.pdb
+BL/obj/Debug/BL.dll
+BL/obj/Debug/BL.csprojAssemblyReference.cache
+BL/bin/Debug/BL.pdb
+BL/bin/Debug/BL.dll
+.vs/ISalud/v16/.suo
