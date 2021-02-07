@@ -196,6 +196,7 @@
     <Content Include="js\jquery-ui\jquery-ui.min.css" />
     <Content Include="js\jquery-ui\jquery-ui.min.js" />
     <Content Include="js\jquery-v3.5.1.js" />
+    <Content Include="js\jquery.rut.js" />
     <Content Include="js\jquerydatepicker.js" />
     <Content Include="js\moment.min.js" />
     <Content Include="js\select2-4.0.7\dist\css\select2.css" />
