@@ -12,6 +12,8 @@ var ListaItemsBonos = [];
 
 var checkedBonos = false;
 
+
+
 function s2ab(s) {
     var buf = new ArrayBuffer(s.length);
     var view = new Uint8Array(buf);
@@ -30,7 +32,7 @@ function makeid(length) {
 }
 $(function () {
 
-
+    $("#txtRutBeneficiarioFiltro").rut({ formatOn: 'keyup' });
     $("#btnExportar").click(function () {
 
         var vSel = false;

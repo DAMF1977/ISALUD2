@@ -113,7 +113,7 @@ $(document).ready(function () {
 
    
 
-
+    $("#txtRutBeneficiario").rut({ formatOn: 'keyup' });
     //Valida un Rut
     function ValidarRut(intlargo) {
         var validacionRut = {
