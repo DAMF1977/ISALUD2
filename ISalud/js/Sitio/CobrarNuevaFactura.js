@@ -313,19 +313,19 @@ var handleCobrarFactura = function () {
                 if (response.Resultado) {
                     ListaItems = response.Elemento;
 
-                    ListaItems.push({
-                        RutPrestador: 78350440,
-                        DV: '5',
-                        RazonSocial: '',
-                        FechaEmision: '01/02/2021 02:15:00',
-                        TipoDT: 33,
-                        FolioDT: 61945,
-                        MontoExento: 0,
-                        MontoAfecto: 0,
-                        IVA: 0,
-                        MontoTotal: 0,
-                        Descuento: 0
-                    });
+                    //ListaItems.push({
+                    //    RutPrestador: 78350440,
+                    //    DV: '5',
+                    //    RazonSocial: '',
+                    //    FechaEmision: '01/02/2021 02:15:00',
+                    //    TipoDT: 33,
+                    //    FolioDT: 61945,
+                    //    MontoExento: 0,
+                    //    MontoAfecto: 0,
+                    //    IVA: 0,
+                    //    MontoTotal: 0,
+                    //    Descuento: 0
+                    //});
 
                     if (ListaItems.length == 0)
                         $('#btn-cobrar-1').hide();
