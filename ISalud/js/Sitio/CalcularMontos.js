@@ -40,7 +40,7 @@ $(function () {
 
         var nombre = makeid(5);
         var tab_text = "<table id='" + nombre + "' style='display: none'>";
-        tab_text = tab_text + "<tr><td></td></tr>";
+        tab_text = tab_text + "<tr><td> Nro.Bono</td></tr>";
         ListaItemsBonos.map(element => {
             if (element.Seleccionado) {
                 tab_text = tab_text + "<tr><td>"+ element.NumeroBono + "</td></tr>";
@@ -170,8 +170,12 @@ $(function () {
             else if ((($('#txtRutBeneficiarioFiltro').val() != '') || ($('#txtRutBeneficiarioFiltro').val() != null)) &&
                 (($('#txtNroCuentaFiltro').val() == '') || ($('#txtNroCuentaFiltro').val() == null))) {
 
+                var rut_beneficiaro = GetInputValue('txtRutBeneficiarioFiltro');
+                rut_beneficiaro = rut_beneficiaro.split('.').join('');
+                var partes_rut = rut_beneficiaro.split('-');
+
                 tipo_filtro = 'RUT';
-                valor_filtro = GetInputValue('txtRutBeneficiarioFiltro');
+                valor_filtro = partes_rut[0];
             }
             else if ((($('#txtRutBeneficiario').val() == '') || ($('#txtRutBeneficiario').val() == null)) &&
                 (($('#txtNroCuentaFiltro').val() != '') || ($('#txtNroCuentaFiltro').val() != null))) {
@@ -298,6 +302,11 @@ $(function () {
             $('#table-list-body-bonos').html('');
         }
 
+        if (IsNull(ListaItemsBonos) == null) {
+            $('#chkTodos').removeClass('checkbox-body');
+            $('#chkTodos').addClass('checkbox-head');
+        }
+
         $.each(ListaItemsBonos, function (i, element) {
 
             var checked = (element.Seleccionado) ? 'checked' : '';
@@ -371,7 +380,7 @@ $(function () {
         var value = GetInputValue('txtRutBeneficiarioFiltro');
         if (IsNull(value) != null) {
             var valid = ValidarRut(value);
-            console.log(valid);
+            console.log(value);
             if (!valid.resultado) {
                 AlertInfo('warning', 'Advertencia', 'EL RUT ingresado no es correcto');
                 SetInputValue('text', 'txtRutBeneficiarioFiltro', '');

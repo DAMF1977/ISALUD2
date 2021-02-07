@@ -38,7 +38,7 @@ $(function () {
     $(document).on('focus', ':input', function () {
         $(this).attr('autocomplete', 'off');
     }).on('paste drop', ':input', function () {
-        return false;
+        return true;
     });
 
     handleFunctions.Init();
