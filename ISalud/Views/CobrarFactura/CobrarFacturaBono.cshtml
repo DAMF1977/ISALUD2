@@ -45,7 +45,8 @@
                         <span class="fake-radiobutton"></span>
                     </span>
                 </label>
-                <input type="text" id="rut-beneficiario" class="inputText format-rut" placeholder="Por rut del beneficiario" disabled>
+                <input type="text" id="rut-beneficiario" class="inputText format-rut" placeholder="Por rut del beneficiario"
+                       maxlength="12" disabled>
             </div>
             <div class="inputCheck">
                 <label class="radio-button check-filtro" rel="3">
@@ -54,7 +55,8 @@
                         <span class="fake-radiobutton"></span>
                     </span>
                 </label>
-                <input type="text" id="n-cuenta-medica" class="inputText FormatNumber" placeholder="Por nº de cuenta médica" disabled>
+                <input type="text" id="n-cuenta-medica" class="inputText FormatNumber" placeholder="Por nº de cuenta médica"
+                       data-precision="10" disabled>
             </div>
         </div>
         <a class="btn-primary" id="btn-continuar" style="display: none;">Continuar</a>
@@ -76,10 +78,10 @@
                     </label>
                 </div>
                 <div>
-                    <input id="txtRutBeneficiarioFiltro" type="text" placeholder="Rut beneficiario">
+                    <input id="txtRutBeneficiarioFiltro" type="text" class="format-rut" placeholder="Rut beneficiario">
                 </div>
                 <div>
-                    <input id="txtNroCuentaFiltro" type="text" class="FormatNumber" placeholder="Nº de cuenta médica">
+                    <input id="txtNroCuentaFiltro" type="text" class="FormatNumber" placeholder="Nº de cuenta médica" data-precision="10">
                 </div>
                 <button id="btn-filtro" type="button"><img src="~/img/i-buscar.svg"></button>
             </form>
@@ -137,5 +139,9 @@
     </div>
 
 </main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/inputmask.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/css/inputmask.min.css" rel="stylesheet" />
 
 <script src="~/js/Sitio/CobrarNuevaFactura.js"></script>

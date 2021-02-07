@@ -37,8 +37,6 @@ $(function () {
 
     $(document).on('focus', ':input', function () {
         $(this).attr('autocomplete', 'off');
-    }).on('paste drop', ':input', function () {
-        return false;
     });
 
     handleFunctions.Init();
@@ -258,19 +256,81 @@ var handleFunctions = function () {
         return n.join(",");
     }
 
-    function formatRut(rut) {
-        const newRut = rut.replace(/\./g, '').replace(/\-/g, '').trim().toLowerCase();
-        const lastDigit = newRut.substr(-1, 1);
-        const rutDigit = newRut.substr(0, newRut.length - 1);
-        let format = '';
-        for (let i = rutDigit.length; i > 0; i--) {
-            const e = rutDigit.charAt(i - 1);
-            format = e.concat(format);
-            if (i % 3 === 0) {
-                format = '.'.concat(format);
-            }
+    function ValidarRut(intlargo) {
+        var validacionRut = {
+            resultado: false,
+            rut: 0,
+            dv: ""
         }
-        return format.concat('-').concat(lastDigit);
+        var tmpstr = "";
+        var dv = 0;
+        var rut = "";
+        if (parseInt(intlargo) != 0) {
+            if (intlargo.length > 0) {
+                let crut = intlargo;
+                let largo = crut.length;
+                if (largo < 2)
+                    return validacionRut;
+                var chardv = '';
+                for (let i = 0; i < crut.length; i++)
+                    if (crut.charAt(i) != ' ' && crut.charAt(i) != '.' && crut.charAt(i) != '-' && !isNaN(parseInt(crut.charAt(i)))) tmpstr = tmpstr + crut.charAt(i);
+                    else if (crut.charAt(i).toUpperCase() == 'K')
+                        chardv = crut.charAt(i).toUpperCase();
+                tmpstr = Number(tmpstr).toString();
+                rut = tmpstr + chardv;
+                crut = tmpstr + chardv;
+                largo = crut.length;
+                rut = (largo > 2) ? crut.substring(0, largo - 1) : crut.charAt(0);
+                dv = crut.charAt(largo - 1);
+                if (rut == null || dv == null)
+                    return validacionRut;
+                var dvr = '0';
+                let suma = 0;
+                let mul = 2;
+                for (let i = rut.length - 1; i >= 0; i--) {
+                    suma = suma + parseInt(rut.charAt(i)) * mul;
+                    if (mul == 7)
+                        mul = 2;
+                    else
+                        mul++;
+                }
+                let res = suma % 11;
+                if (res == 1)
+                    dvr = 'k';
+                else if (res == 0)
+                    dvr = '0';
+                else {
+                    let dvi = 11 - res;
+                    dvr = dvi + "";
+                }
+                if (dvr != dv.toString().toLowerCase())
+                    return validacionRut;
+                var rut_final = "";
+                var num = 0;
+                var val = rut.length;
+                while (val != 0) {
+                    num++;
+                    if (num == 3) {
+                        rut_final = "" + rut[val - 1] + rut_final;
+                        num = 0;
+                    }
+                    else
+                        rut_final = rut[val - 1] + rut_final;
+                    val--;
+                }
+                validacionRut.rut = parseInt(rut_final);
+                validacionRut.dv = dv.toString();
+                validacionRut.resultado = true;
+                if (rut_final == '0-0')
+                    return '';
+                else
+                    return validacionRut;
+            }
+            else
+                return validacionRut;
+        }
+        else
+            return validacionRut;
     }
 
     return {
@@ -320,16 +380,19 @@ var handleFunctions = function () {
                 event.preventDefault();
             });
 
-            $('.format-rut').on("input", function (e) {
-                this.value = formatRut(this.value);
-            }).on("blur", function (e) {
+            $(document).on("blur", ".format-rut", function (e) {
                 if (IsNull(this.value) != null) {
                     var valid = ValidarRut(this.value);
-                    if (!valid.resultado) {
+                    if (!valid.resultado || valid.rut == 0) {
                         AlertInfo('warning', 'Advertencia', 'EL RUT ingresado no es correcto');
                         this.value = '';
                     }
                 }
+            }).on("keypress", function (e) {
+                if ((e.which >= 45 && e.which <= 57 && e.which != 47) || e.which == 107 || e.which == 75)
+                    return true;
+                else
+                    return false;
             });
         }
     }
@@ -356,84 +419,6 @@ function InitDatePickerOptions() {
         yearSuffix: ''
     };
     $.datepicker.setDefaults($.datepicker.regional['es']);
-}
-
-//Valida un Rut
-function ValidarRut(intlargo) {
-    var validacionRut = {
-        resultado: false,
-        rut: 0,
-        dv: ""
-    }
-    var tmpstr = "";
-    var dv = 0;
-    var rut = "";
-    if (parseInt(intlargo) != 0) {
-        if (intlargo.length > 0) {
-            let crut = intlargo;
-            let largo = crut.length;
-            if (largo < 2)
-                return validacionRut;
-            var chardv = '';
-            for (let i = 0; i < crut.length; i++)
-                if (crut.charAt(i) != ' ' && crut.charAt(i) != '.' && crut.charAt(i) != '-' && !isNaN(parseInt(crut.charAt(i)))) tmpstr = tmpstr + crut.charAt(i);
-                else if (crut.charAt(i).toUpperCase() == 'K')
-                    chardv = crut.charAt(i).toUpperCase();
-            tmpstr = Number(tmpstr).toString();
-            rut = tmpstr + chardv;
-            crut = tmpstr + chardv;
-            largo = crut.length;
-            rut = (largo > 2) ? crut.substring(0, largo - 1) : crut.charAt(0);
-            dv = crut.charAt(largo - 1);
-            if (rut == null || dv == null)
-                return validacionRut;
-            var dvr = '0';
-            let suma = 0;
-            let mul = 2;
-            for (let i = rut.length - 1; i >= 0; i--) {
-                suma = suma + parseInt(rut.charAt(i)) * mul;
-                if (mul == 7)
-                    mul = 2;
-                else
-                    mul++;
-            }
-            let res = suma % 11;
-            if (res == 1)
-                dvr = 'k';
-            else if (res == 0)
-                dvr = '0';
-            else {
-                let dvi = 11 - res;
-                dvr = dvi + "";
-            }
-            if (dvr != dv.toString().toLowerCase())
-                return validacionRut;
-            var rut_final = "";
-            var num = 0;
-            var val = rut.length;
-            while (val != 0) {
-                num++;
-                if (num == 3) {
-                    rut_final = "" + rut[val - 1] + rut_final;
-                    num = 0;
-                }
-                else
-                    rut_final = rut[val - 1] + rut_final;
-                val--;
-            }
-            validacionRut.rut = parseInt(rut_final);
-            validacionRut.dv = dv.toString();
-            validacionRut.resultado = true;
-            if (rut_final == '0-0')
-                return '';
-            else
-                return validacionRut;
-        }
-        else
-            return validacionRut;
-    }
-    else
-        return validacionRut;
 }
 
 // obtiene el valor seleccionado de un combobox

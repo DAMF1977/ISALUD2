@@ -27,6 +27,8 @@ $(function () {
 
     handlePagesStates.init();
 
+    handleFunctions.Init();
+
 });
 
 var handlePagesStates = function () {
@@ -111,6 +113,9 @@ var handlePagesStates = function () {
 
         $(document).on('click', '.check-filtro', function () {
 
+            $("#rut-beneficiario").rut({ formatOn: 'keyup' });
+            handleFunctions.Init();
+
             let tipo = $(this).attr('rel');
             if (tipo == 2) {
                 $('#n-cuenta-medica').val('');
@@ -187,6 +192,9 @@ var handlePagesStates = function () {
 
         $(document).on('click', '#btn-continuar', function (e) {
 
+            $("#txtRutBeneficiarioFiltro").rut({ formatOn: 'keyup' });
+            handleFunctions.Init();
+
             var continuar = true;
             var objFiltro = handleGetFiltroCobro();
             if (objFiltro != null) {
@@ -203,16 +211,16 @@ var handlePagesStates = function () {
 
                 if (continuar) {
 
-                    $(document).on('blur', '#txtRutBeneficiarioFiltro', function (e) {
-                        var value = GetInputValue('txtRutBeneficiarioFiltro');
-                        if (IsNull(value) != null) {
-                            var valid = ValidarRut(value);
-                            if (!valid.resultado) {
-                                AlertInfo('warning', 'Advertencia', 'EL RUT ingresado no es correcto');
-                                SetInputValue('text', 'txtRutBeneficiarioFiltro', '');
-                            }
-                        }
-                    });
+                    //$(document).on('blur', '#txtRutBeneficiarioFiltro', function (e) {
+                    //    var value = GetInputValue('txtRutBeneficiarioFiltro');
+                    //    if (IsNull(value) != null) {
+                    //        var valid = ValidarRut(value);
+                    //        if (!valid.resultado) {
+                    //            AlertInfo('warning', 'Advertencia', 'EL RUT ingresado no es correcto');
+                    //            SetInputValue('text', 'txtRutBeneficiarioFiltro', '');
+                    //        }
+                    //    }
+                    //});
 
                     switch (objFiltro.FiltroBono) {
                         case "1":

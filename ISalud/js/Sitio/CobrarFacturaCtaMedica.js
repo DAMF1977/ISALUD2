@@ -12,6 +12,7 @@ $(function () {
 
     handlePagesStates.init();
 
+    handleFunctions.Init();
 });
 
 var handlePagesStates = function () {
@@ -50,6 +51,8 @@ var handlePagesStates = function () {
         InitForm();
         handleGenericEvents();
         handleButtonsEvents();
+
+        $("#txtRutPaciente").rut({ formatOn: 'keyup' });
     }
 
     function InitForm() {
@@ -148,27 +151,41 @@ var handlePagesStates = function () {
                     }
                     else {
 
+                        var adjuntar = true;
                         var tipo_id = Number(GetSelectValue('select-documentacion'));
                         var valid_tipo = ListaArchivos.filter(x => x.TipoId == tipo_id);
 
-                        if (valid_tipo.length > 0) {
-                            AlertInfo('warning', 'Advertencia', 'El documento ya se encuentra adjunto');
-                            $("#lblInputFile").text("Click aquí para subir archivo");
-                            $('#file-3').val(null);
-                            SetInputValue('select2', 'select-documentacion', '0');
-                            $('#subir-archivo').fadeOut();
+                        var adjuntar = true;
+                        if (tipo_id != 6) {
+                            if (valid_tipo.length > 0) {
+                                AlertInfo('warning', 'Advertencia', 'El documento ya se encuentra adjunto');
+                                $("#lblInputFile").text("Click aquí para subir archivo");
+                                $('#file-3').val(null);
+                                SetInputValue('select2', 'select-documentacion', '0');
+                                $('#subir-archivo').fadeOut();
+                                adjuntar = false;
+                            }
                         }
-                        else {
+
+                        if (adjuntar) {
 
                             ListaArchivos.push({
                                 Id: ListaArchivos.length + 1,
                                 Nombre: filename,
                                 TipoId: tipo_id,
                                 TipoNombre: GetSelectText('select-documentacion'),
-                                Data: e.target.result
+                                Data: e.target.result,
+                                UltimoDocumento: 0
                             });
 
-                            console.log('ListaArchivos', ListaArchivos);
+                            ListaArchivos.map((elem, i) => {
+                                if ((i + 1) == ListaArchivos.length) {
+                                    elem.UltimoDocumento = 1;
+                                }
+                                else {
+                                    elem.UltimoDocumento = 0;
+                                }
+                            });
 
                             $("#lblInputFile").text("Click aquí para subir archivo");
                             $('#file-3').val(null);
@@ -181,6 +198,7 @@ var handlePagesStates = function () {
                             $('#btn-continuar').addClass('animate__animated animate__fadeIn');
 
                         }
+
                     }
 
                 });
@@ -357,7 +375,7 @@ var handleCobroCuentaMedica = function () {
                     TipoDocumento: elem.TipoId,
                     FolioDT: objFiltro.NroFactura,
                     TipoDT: objFiltro.TipoDT,
-                    UltimoDocumento: 0,
+                    UltimoDocumento: elem.UltimoDocumento,
                     NombreArchivo: elem.Nombre,
                     Archivo: fileData[1]
                 });

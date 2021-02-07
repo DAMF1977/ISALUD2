@@ -298,20 +298,28 @@ var handleDatatableBonos = function () {
                 var objFiltro = handlePagesStates.handleGetFiltroCobro();
                 if (objFiltro != null) {
 
-                    $('#lblNroFacturaModal').text(objFiltro.NroFactura);
-                    if (objFiltro.TipoCobro == 'bono')
-                        $('#lblTipoCobroModal').text('Bono');
-                    else {
-                        if (objFiltro.TipoCobro == 'archivo')
-                            $('#lblTipoCobroModal').text('Archivo');
-                        else
-                            $('#lblTipoCobroModal').text('Cuenta médica');
-                    }
-                    $('#lblFechaCobroModal').text(moment().format(Global.FormatoFecha));
-                    $('#lblMontoCobroModal').text(handleFormato.formatNumber.new(objFiltro.ValorFactura));
+                    var total_factura = Number(objFiltro.ValorFactura);
 
-                    $(".overlay").fadeIn(200);
-                    event.preventDefault();
+                    if (total_factura != total_bonos)
+                        AlertInfo('warning', 'Advertencia', 'La suma de los bonos seleccionados debe ser igual al monto de la factura');
+                    else {
+
+                        $('#lblNroFacturaModal').text(objFiltro.NroFactura);
+                        if (objFiltro.TipoCobro == 'bono')
+                            $('#lblTipoCobroModal').text('Bono');
+                        else {
+                            if (objFiltro.TipoCobro == 'archivo')
+                                $('#lblTipoCobroModal').text('Archivo');
+                            else
+                                $('#lblTipoCobroModal').text('Cuenta médica');
+                        }
+                        $('#lblFechaCobroModal').text(moment().format(Global.FormatoFecha));
+                        $('#lblMontoCobroModal').text(handleFormato.formatNumber.new(objFiltro.ValorFactura));
+
+                        $(".overlay").fadeIn(200);
+                        event.preventDefault();
+
+                    }
 
                 }
 

@@ -838,3 +838,7 @@ input[type="checkbox"]:checked + span .fake-checkbox:after { display: block; }
     right: 20px;
     top: 16px;
 }
+
+.active-menu {
+    border-color: var(--colorPrimario) !important;
+}
