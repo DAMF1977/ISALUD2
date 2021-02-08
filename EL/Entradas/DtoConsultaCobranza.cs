@@ -11,7 +11,7 @@ namespace EL.Entradas
 
         public DtoConsultaCobranza()
         {
-            ListaRut = new List<int>() { 70905700, 78394040 };
+           // ListaRut = new List<int>() { 70905700, 78394040 };
             //Estado = 1;
             
             //TipoCobro = 3;
