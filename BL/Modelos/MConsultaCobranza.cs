@@ -20,9 +20,46 @@ namespace BL.Modelos
         
         }
 
+        public List<int> ConsultaPrestadores()
+        {
+            List<int> Respuesta = new List<int>();
+
+            var urlService = ConfigurationManager.ConnectionStrings["webAPI"].ConnectionString;
+            RestClient Client = new RestClient(urlService);
+            Client.Timeout = 600000; // 10 minutos
+
+            var param = new Dictionary<string, object>() { { "Rut", "70905700" } };
+            ;
+            string Json_Obj = JsonConvert.SerializeObject(param);
+            RestRequest Request = new RestRequest("api/pagoprestadores/consultadatosprestadores", Method.POST, DataFormat.Json);
+            Request.AddParameter("application/json", Json_Obj, ParameterType.RequestBody);
+
+            var session = (DtoSessionUsuario)MSession.ReturnSessionObject();
+            Request.AddHeader("Authorization", String.Format("Bearer {0}", session.TokenJWT));
+
+            var Response = Client.Post(Request);
+
+            if (Response.StatusCode == HttpStatusCode.OK)
+            {
+                var serializer = new JavaScriptSerializer();
+                serializer.MaxJsonLength = 500000000;
+                var data = serializer.Deserialize<PrestadoresFacturas>(Response.Content);
+                if (data.Code == 0)
+                {
+                    Respuesta = data.Prestadores.Select(x => x.Rut.Value).ToList();
+                }
+            }
+
+            return Respuesta;
+        }
+
+
         public Respuesta CargarGrilla(DtoConsultaCobranza param)
         {
             Respuesta Respuesta = new Respuesta();
+
+            var prestadores = ConsultaPrestadores();
+            param.ListaRut = prestadores;
 
             var urlService = ConfigurationManager.ConnectionStrings["webAPI2"].ConnectionString;
             RestClient Client = new RestClient(urlService);
