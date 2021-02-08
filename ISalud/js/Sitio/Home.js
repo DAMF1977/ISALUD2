@@ -1,5 +1,7 @@
 ﻿$(function () {
+    
     localStorage.clear();
+
 });
 
 $(document).ready(function () {
@@ -45,7 +47,7 @@ $(document).ready(function () {
             },
             success: function (response) {
               
-                console.log(response);
+                handlePrestadores.Buscar();
                 
             },
             error: function (xhr, status, error) {

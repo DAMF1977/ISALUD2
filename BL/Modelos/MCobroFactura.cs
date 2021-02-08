@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
 using System.Net;
 using Newtonsoft.Json;
@@ -18,43 +16,9 @@ namespace BL.Modelos
 {
     public class MCobroFactura
     {
-        public MCobroFactura()
+        public List<int> ConsultaPrestadores()
         {
-
-        }
-
-        //public List<int> ConsultaRutPrestadores()
-        //{
-        //    var lista = new List<int>() { 60910000,
-        //                                61101086,
-        //                                70905700,
-        //                                76105383,
-        //                                76106530,
-        //                                76120722,
-        //                                76160580,
-        //                                76189020,
-        //                                76683055,
-        //                                76687017,
-        //                                76751280,
-        //                                77200240,
-        //                                77237150,
-        //                                77305870,
-        //                                78040520,
-        //                                78350440,
-        //                                78454810,
-        //                                79576810,
-        //                                90753000,
-        //                                96513980,
-        //                                99533790,
-        //                                99537800,
-        //                                99573490 };
-
-        //    return lista;
-        //}
-
-        public Respuesta ConsultaRutPrestadores()
-        {
-            Respuesta Respuesta = new Respuesta();
+            List<int> Respuesta = new List<int>();
 
             var urlService = ConfigurationManager.ConnectionStrings["webAPI"].ConnectionString;
             RestClient Client = new RestClient(urlService);
@@ -78,19 +42,8 @@ namespace BL.Modelos
                 var data = serializer.Deserialize<PrestadoresFacturas>(Response.Content);
                 if (data.Code == 0)
                 {
-                    Respuesta.Elemento = data.Prestadores;
+                    Respuesta = data.Prestadores.Select(x => x.Rut.Value).ToList();
                 }
-                else
-                {
-                    Respuesta.Resultado = false;
-                    Respuesta.Mensaje = "No se encontraron registros";
-                }
-            }
-            else
-            {
-                Respuesta.EsError = true;
-                Respuesta.Resultado = false;
-                Respuesta.Mensaje = String.Format("Ha ocurrido un error en la solicitud: {0}", Response.ErrorMessage);
             }
 
             return Respuesta;
@@ -100,15 +53,8 @@ namespace BL.Modelos
         {
             Respuesta Respuesta = new Respuesta();
 
-            var prestadores = ConsultaRutPrestadores();
-            if (prestadores.Resultado)
-            {
-                var data_prestadores = (List<Prestador>)prestadores.Elemento;
-                param.ListaRut = (data_prestadores == null) ? new List<int>() : data_prestadores.Select(s => s.Rut.Value).ToList();
-            }
-            else {
-                param.ListaRut = new List<int>();
-            }
+            var prestadores = ConsultaPrestadores();
+            param.ListaRut = prestadores;
 
             var urlService = ConfigurationManager.ConnectionStrings["webAPI2"].ConnectionString;
             RestClient Client = new RestClient(urlService);

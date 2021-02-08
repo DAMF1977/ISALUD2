@@ -223,5 +223,24 @@ namespace ISalud.Controllers
 
             return new JsonResult { JsonRequestBehavior = JsonRequestBehavior.AllowGet, Data = Respuesta };
         }
+
+        [HttpGet]
+        public JsonResult ConsultaPrestadores()
+        {
+            List<int> Respuesta = new List<int>();
+            try
+            {
+                MCobroFactura Model = new MCobroFactura();
+                Respuesta = Model.ConsultaPrestadores();
+                Response.StatusCode = (int)HttpStatusCode.OK;
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                Response.StatusDescription = ex.Message.Replace("\r", "").Replace("\n", "").Replace("\t", "").Replace("\v", "").Replace("\f", "").ToString();
+            }
+
+            return new JsonResult { JsonRequestBehavior = JsonRequestBehavior.AllowGet, Data = Respuesta };
+        }
     }
 }

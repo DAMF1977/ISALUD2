@@ -7,7 +7,8 @@
         SubirArchivo: 'SubirArchivo',
         CobrarFacturaBonosCuentaMedica: 'CobrarFacturaBonosCuentaMedica',
         EnviarDocumentoCuentaMedica: 'EnviarDocumentoCuentaMedica',
-        ObtieneFacturaPDF: 'ObtieneFacturaPDF'
+        ObtieneFacturaPDF: 'ObtieneFacturaPDF',
+        ConsultaPrestadores: 'ConsultaPrestadores'
     },
     CalcularMontosController: {
         Name: 'CalcularMontos',
@@ -453,3 +454,35 @@ function EnableRevalidateFormElements(formName, arrayId, status, arrayFunction) 
         });
     });
 }
+
+var handlePrestadores = function () {
+
+    function handleSetPrestadores(value) {
+        localStorage.setItem('objPrestadores', JSON.stringify(value));
+    }
+
+    function handleGetPrestadores() {
+        var value = localStorage.getItem('objPrestadores');
+        if (IsNull(value) == null)
+            return null
+        else
+            return $.parseJSON(value);
+    }
+
+    function Buscar() {
+
+        EjecutaConsulta.Get(Global.CobrarFacturaController.Name, Global.CobrarFacturaController.ConsultaPrestadores, false)
+            .then(response => {
+                if (IsNull(response) != null) {
+                    handleSetPrestadores(response);
+                }
+            });
+
+    }
+
+    return {
+        Buscar: Buscar,
+        handleGetPrestadores: handleGetPrestadores
+    }
+
+}();
