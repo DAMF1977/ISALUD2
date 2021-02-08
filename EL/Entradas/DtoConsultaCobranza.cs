@@ -24,8 +24,8 @@ namespace EL.Entradas
         public string FechaTermino { get; set; }
         public long? NroFactura { get; set; }
         
-        //public long? TipoCobro { get; set; }
-        //public long? NroCobranza { get; set; }
+        public long? TipoCobro { get; set; }
+        public long? NroCobranza { get; set; }
 
     }
 }
