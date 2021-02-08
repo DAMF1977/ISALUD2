@@ -1,5 +1,5 @@
 ﻿var tableHeaderBonos  = [
-    { Nombre: `<input id="chkTodos"  width="10px" type="checkbox" name="type" />`, MinWidth: "", MaxWidth: "", ClassName: "text-center" },
+    { Nombre: `<input id="chkTodos" type="checkbox" name="type" class="checkbox-body" />`, MinWidth: "", MaxWidth: "", ClassName: "text-center" },
     { Nombre: "Nº bono", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
     { Nombre: "Monto bono", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
     { Nombre: "Nº de cuenta médica", MinWidth: "", MaxWidth: "", ClassName: "text-left" },
@@ -315,7 +315,7 @@ $(function () {
             let row = '';
             row += `<tr>
                         <td width="10">
-                            <input class="select-bono" data-id="${element.NumeroBono}" type="checkbox" name="type" ${checked} />
+                            <input class="select-bono checkbox-body" data-id="${element.NumeroBono}" type="checkbox" name="type" ${checked} />
                         </td>
                         <td> <a href="${element.UrlBono}"  target="_blank">${element.NumeroBono}</a></td>
                         <td>$${handleFormato.formatNumber.new(element.MontoACobrar)}</td>
