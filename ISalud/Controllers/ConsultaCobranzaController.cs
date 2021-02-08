@@ -19,12 +19,16 @@ namespace ISalud.Controllers
         }
 
 
+
         [HttpPost]
         public JsonResult CargarGrilla(DtoConsultaCobranza data)
         {
             Respuesta Respuesta = new Respuesta();
             try
             {
+               
+
+
                 MConsultaCobranza Model = new MConsultaCobranza();
                 Respuesta = Model.CargarGrilla(data);
                 Response.StatusCode = (int)HttpStatusCode.OK;

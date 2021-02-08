@@ -24,19 +24,31 @@ $(function () {
             return $.parseJSON(value);
     }
 
+    function handleGetFiltroPrestadores() {
+        var value = localStorage.getItem('objPrestadores');
+        if (IsNull(value) == null)
+            return null
+        else
+            return $.parseJSON(value);
+    }
+
+
     function ConsultaGrilla() {
 
-        console.log()
+       // console.log()
      //   var objFiltro = handleGetFiltroCobro();
-     
+
+       // var Prestadores = handleGetFiltroPrestadores();
      
             var fecha_inicio = (IsNull(GetInputValue('txtFechaIni')) == null) ? "" : GetInputValue('txtFechaIni'),
                 fecha_termino = IsNull(GetInputValue('txtFechaTermino')) == null ? "" : GetInputValue('txtFechaTermino'),
                 nro_factura = IsNull(GetInputValue('txtNroFactura')) == null ? 0 : GetInputValue('txtNroFactura');
 
             
+       // console.log(Prestadores);
+        var params = {
 
-            var params = {
+        
                 "Estado": 1,
                 "NroFactura": IsNull(GetInputValue('txtNroFactura')) == null ? 0 : GetInputValue('txtNroFactura'),
                 "FechaInicio": (IsNull(GetInputValue('txtFechaIni')) == null) ? "" : GetInputValue('txtFechaIni'), 
