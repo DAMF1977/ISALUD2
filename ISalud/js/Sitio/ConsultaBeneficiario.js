@@ -233,7 +233,12 @@ $(document).ready(function () {
 
     //Funciones
     function CargarBeneficiario() {
-        var v_rut = $("#txtRutBeneficiario").val().split('-');
+        //var v_rut = $("#txtRutBeneficiario").val().split('-');
+
+        var rut_beneficiaro = GetInputValue('txtRutBeneficiario');
+        rut_beneficiaro = rut_beneficiaro.split('.').join('');
+        var v_rut = rut_beneficiaro.split('-');
+
 
         var _Data = {
             "RutBeneficiario": v_rut[0] //"2410000" //
