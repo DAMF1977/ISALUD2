@@ -23,40 +23,92 @@ namespace BL.Modelos
 
         }
 
-        public List<int> ConsultaRutPrestadores()
-        {
-            var lista = new List<int>() { 60910000,
-                                        61101086,
-                                        70905700,
-                                        76105383,
-                                        76106530,
-                                        76120722,
-                                        76160580,
-                                        76189020,
-                                        76683055,
-                                        76687017,
-                                        76751280,
-                                        77200240,
-                                        77237150,
-                                        77305870,
-                                        78040520,
-                                        78350440,
-                                        78454810,
-                                        79576810,
-                                        90753000,
-                                        96513980,
-                                        99533790,
-                                        99537800,
-                                        99573490 };
+        //public List<int> ConsultaRutPrestadores()
+        //{
+        //    var lista = new List<int>() { 60910000,
+        //                                61101086,
+        //                                70905700,
+        //                                76105383,
+        //                                76106530,
+        //                                76120722,
+        //                                76160580,
+        //                                76189020,
+        //                                76683055,
+        //                                76687017,
+        //                                76751280,
+        //                                77200240,
+        //                                77237150,
+        //                                77305870,
+        //                                78040520,
+        //                                78350440,
+        //                                78454810,
+        //                                79576810,
+        //                                90753000,
+        //                                96513980,
+        //                                99533790,
+        //                                99537800,
+        //                                99573490 };
 
-            return lista;
+        //    return lista;
+        //}
+
+        public Respuesta ConsultaRutPrestadores()
+        {
+            Respuesta Respuesta = new Respuesta();
+
+            var urlService = ConfigurationManager.ConnectionStrings["webAPI"].ConnectionString;
+            RestClient Client = new RestClient(urlService);
+            Client.Timeout = 600000; // 10 minutos
+
+            var param = new Dictionary<string, object>() { { "Rut", "70905700" } };
+;
+            string Json_Obj = JsonConvert.SerializeObject(param);
+            RestRequest Request = new RestRequest("api/pagoprestadores/consultadatosprestadores", Method.POST, DataFormat.Json);
+            Request.AddParameter("application/json", Json_Obj, ParameterType.RequestBody);
+
+            var session = (DtoSessionUsuario)MSession.ReturnSessionObject();
+            Request.AddHeader("Authorization", String.Format("Bearer {0}", session.TokenJWT));
+
+            var Response = Client.Post(Request);
+
+            if (Response.StatusCode == HttpStatusCode.OK)
+            {
+                var serializer = new JavaScriptSerializer();
+                serializer.MaxJsonLength = 500000000;
+                var data = serializer.Deserialize<PrestadoresFacturas>(Response.Content);
+                if (data.Code == 0)
+                {
+                    Respuesta.Elemento = data.Prestadores;
+                }
+                else
+                {
+                    Respuesta.Resultado = false;
+                    Respuesta.Mensaje = "No se encontraron registros";
+                }
+            }
+            else
+            {
+                Respuesta.EsError = true;
+                Respuesta.Resultado = false;
+                Respuesta.Mensaje = String.Format("Ha ocurrido un error en la solicitud: {0}", Response.ErrorMessage);
+            }
+
+            return Respuesta;
         }
 
         public Respuesta ConsultaFacturas(DtoCobroFactura param)
         {
             Respuesta Respuesta = new Respuesta();
 
-            param.ListaRut = ConsultaRutPrestadores();
+            var prestadores = ConsultaRutPrestadores();
+            if (prestadores.Resultado)
+            {
+                var data_prestadores = (List<Prestador>)prestadores.Elemento;
+                param.ListaRut = (data_prestadores == null) ? new List<int>() : data_prestadores.Select(s => s.Rut.Value).ToList();
+            }
+            else {
+                param.ListaRut = new List<int>();
+            }
 
             var urlService = ConfigurationManager.ConnectionStrings["webAPI2"].ConnectionString;
             RestClient Client = new RestClient(urlService);

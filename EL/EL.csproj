@@ -57,6 +57,7 @@
     <Compile Include="Salidas\CobroFacturaBonos.cs" />
     <Compile Include="Salidas\ConsultaCobranza.cs" />
     <Compile Include="Salidas\FacturaPDF.cs" />
+    <Compile Include="Salidas\PrestadoresFacturas.cs" />
     <Compile Include="Salidas\Respuesta.cs" />
   </ItemGroup>
   <ItemGroup />
